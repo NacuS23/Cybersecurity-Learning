@@ -1,94 +1,43 @@
-# Day 1 - DNS, IP Addresses and Traceroute
+# Day 1 - DNS, IPs and traceroute
 
-## Objective
+This was my first proper day learning networking for cybersecurity.
 
-The goal of this lab was to understand what happens when I enter a website such as google.com into my browser.
+I wanted to understand what actually happens when I type something like `google.com` in the browser because before this I never really thought about what happens in the background.
 
-I learned about:
-
-- IP addresses
-- DNS
-- Ports
-- HTTP and HTTPS
-- Traceroute
-- IPv4 and IPv6
-
-## Commands Used
-
-### ipconfig
-
-I used:
+## Commands I tried
 
 `ipconfig`
 
-This allowed me to see the network configuration of my Windows computer, including my local IPv4 address.
-
-### nslookup
-
-I used:
+This showed me my network information and my local IP address.
 
 `nslookup google.com`
 
-I learned that DNS translates a domain name such as google.com into IP addresses that computers can use.
+This was interesting because Google did not give me only one IP. It gave me a few IPv4 and IPv6 addresses.
 
-Google returned multiple IPv4 and IPv6 addresses.
-
-One IPv4 address I received was:
+One IPv4 I got was:
 
 `142.251.30.102`
 
-This also taught me that one domain does not necessarily have only one IP address.
-
-### tracert
-
-I used:
+At first I thought the addresses that came back were the DNS server, but I learned they were actually IP addresses returned by DNS for Google.
 
 `tracert google.com`
 
-The destination was reached after approximately 15 hops.
+Mine showed around 15 hops.
 
-I learned that internet traffic does not simply travel directly from my computer to Google's server. It passes through multiple routers and networks on the way to the destination.
+I understood this as my traffic not going straight from my laptop to Google. It goes through different routers/networks before reaching the destination.
 
-## Important Concepts
+## Things I learned today
 
-### DNS
+- DNS changes a domain name like `google.com` into an IP address
+- an IP address tells you where a device/server is on a network
+- a port is more like which service you want to talk to
+- port 443 is normally HTTPS
+- HTTPS is encrypted using TLS
+- one website can have more than one IP address
+- a hop is one step along the route to the destination
 
-DNS stands for Domain Name System.
+The order I learned for opening a website was basically:
 
-Its job is to translate domain names into IP addresses.
+`type website -> DNS finds IP -> traffic travels through networks -> HTTPS connection -> website sends data back`
 
-Example:
-
-`google.com -> DNS -> IP address`
-
-### IP Address vs Port
-
-An IP address identifies a destination on a network.
-
-A port identifies the service that I want to communicate with on that destination.
-
-For example:
-
-`443 = HTTPS`
-
-### HTTPS
-
-HTTPS protects communication between my browser and a website using encryption through TLS.
-
-## What Happens When I Visit google.com?
-
-My current understanding is:
-
-1. I enter google.com into my browser.
-2. DNS finds an IP address for google.com.
-3. Traffic travels through networks and routers towards Google's infrastructure.
-4. An HTTPS/TLS connection is established, normally using port 443.
-5. Google sends the requested data back to my browser.
-
-## What I Learned
-
-Before this lab, I had very little understanding of what happened behind the scenes when I opened a website.
-
-After running these commands myself, I now understand the basic relationship between DNS, IP addresses, ports and network routing.
-
-This is the first practical lab in my cybersecurity learning journey.
+I am still new to all of this but after actually using the commands it made more sense than just reading definitions.
