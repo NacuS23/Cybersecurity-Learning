@@ -15,6 +15,7 @@ Identify the program behind a listening port, inspect its file location and digi
 3. Identified a TCP listener on port 2968 and UDP endpoints using the same port.
 4. Opened the process's file location through Task Manager.
 5. Opened the executable's Properties → Digital Signatures → Details and checked its signer and verification status.
+6. Completed the antivirus check and checked VirusTotal; both reported no detections.
 
 Commands used, with the session-specific PID replaced by a placeholder:
 
@@ -36,6 +37,8 @@ Replace `<PID>` with the actual process ID. Check the final PID column because `
 | File location | `C:\Program Files (x86)\Epson Software\Event Manager` |
 | Signer | `SEIKO EPSON CORPORATION` |
 | Signature status | Windows reported that the digital signature was OK |
+| Antivirus check | No detections reported by me after the check |
+| VirusTotal check | No detections reported by me after the check |
 
 The local IP address, account name and session-specific PID are omitted from this public write-up. This is a summary of observations, not a full forensic capture.
 
@@ -51,15 +54,12 @@ The local IP address, account name and session-specific PID are omitted from thi
 
 ## Assessment and limits
 
-The observed folder and valid Epson signature support a legitimate Epson software explanation. I found no clear malicious indicator in the limited evidence checked. This was a basic investigation, not a definitive malware verdict or a complete system security assessment.
+The observed folder, valid Epson signature and reported antivirus/VirusTotal results support a legitimate Epson software explanation. No detections is reassuring evidence, not a guarantee of safety. The scan results are recorded from my reported outcome; a report URL, file hash, engine count and screenshots were not captured in this write-up. I found no clear malicious indicator in the limited evidence checked. This was a basic investigation, not a definitive malware verdict or a complete system security assessment.
 
-## Follow-up work — not yet verified
+## Optional follow-up
 
-We discussed these checks, but no completed results were recorded in this session:
-
-- Scan the Epson folder with Windows Security.
-- Calculate a SHA256 hash and search for an existing VirusTotal report.
-- Investigate remote connections and child processes if further evidence warrants it.
+- Record the SHA256 hash and VirusTotal report link for reproducibility.
+- Investigate remote connections and child processes if further evidence warrants it; these behaviour checks were not completed in this session.
 
 ## Why this matters for SOC work
 
