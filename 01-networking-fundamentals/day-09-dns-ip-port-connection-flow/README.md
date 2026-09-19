@@ -61,6 +61,40 @@ The replies I did get were around 11-15 ms.
 
 I learned that one missed ping does not automatically mean there is a serious network problem. ICMP replies can sometimes be dropped or deprioritised.
 
+## Following the connection to a process
+
+After opening the website in Microsoft Edge, I checked HTTPS connections with:
+
+```powershell
+netstat -ano | findstr ":443"
+```
+
+I then filtered the connections using PID `13848`:
+
+```powershell
+netstat -ano | findstr "13848"
+```
+
+There were multiple ESTABLISHED TCP connections to remote servers on port 443.
+
+I checked the PID with:
+
+```powershell
+tasklist | findstr 13848
+```
+
+and got:
+
+```
+msedge.exe  13848
+```
+
+So I confirmed that PID `13848` belonged to Microsoft Edge and that Edge had several active HTTPS connections.
+
+One thing I noticed is that none of those connections matched the exact `example.com` IP from the earlier DNS lookup. That was useful because it showed me that a browser can have lots of HTTPS connections at the same time, and seeing the same PID does not automatically tell me which exact website a connection belongs to.
+
+I also saw UDP traffic on port `5353`, which is commonly used for mDNS (Multicast DNS) on the local network.
+
 ## Things I corrected today
 
 I initially described DNS as a connection between things.
@@ -77,6 +111,8 @@ I also want to remember:
 - Port = clue about the service/application
 - PID = Process ID
 - 443 = normally HTTPS
+- ESTABLISHED = active TCP connection
+- One browser can connect to many different remote servers
 - An unknown program using port 443 is not automatically safe just because it is HTTPS
 
 ## Security thinking
@@ -104,5 +140,7 @@ IP = network address
 Port = service/application clue
 PID = Process ID
 443 = HTTPS
+ESTABLISHED = active TCP connection
+PID 13848 = msedge.exe in my test
 Unknown process + unknown destination = investigate further
 ```
