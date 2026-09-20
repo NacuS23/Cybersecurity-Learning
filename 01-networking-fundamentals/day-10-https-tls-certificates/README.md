@@ -66,15 +66,9 @@ A valid certificate does not mean the website itself is trustworthy.
 
 A phishing or malicious website can still use HTTPS and have a valid certificate.
 
-## Mistake I made today
+## Useful distinction
 
-I mixed up HTTPS with IPv6.
-
-I thought HTTPS was the secure version using IPv6 instead of IPv4.
-
-That is wrong.
-
-A better way to remember it is:
+A useful way to separate these concepts is:
 
 ```
 IPv4 / IPv6 = addressing systems
