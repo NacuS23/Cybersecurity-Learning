@@ -1,9 +1,13 @@
 # Cybersecurity-Learning
 My hands-on journey learning networking, Cybersecurity and SOC analysis and more!
 
+## Core memory
+
+[Open the expandable daily recap](CORE-MEMORY.md)
+
 ## Learning notes
 
-[Networking fundamentals — Days 1–8](01-networking-fundamentals/)
+[Networking fundamentals — Days 1–14](01-networking-fundamentals/)
 
 ## Practical labs
 
