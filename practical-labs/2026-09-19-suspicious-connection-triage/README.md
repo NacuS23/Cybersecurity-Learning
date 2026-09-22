@@ -94,3 +94,20 @@ This exercise practised prioritisation rather than proving that any connection w
 SOC analysts regularly receive more alerts than they can investigate at once. They need to identify which activity deserves attention first and explain the decision using evidence.
 
 This exercise practised separating observations from conclusions and avoiding decisions based on only one indicator such as a port number, process name, or digital signature.
+
+## Answer review — 22 September 2026
+
+After the worked example above, I submitted my own answers and reviewed them with guidance:
+
+- I chose Connection B because it lacked a digital signature and reconnected every minute after Edge was closed.
+- I identified the Temp folder as another concern and said it was worth investigating rather than immediately calling it malicious.
+- Feedback clarified that a file stored in Temp is not necessarily a temporary file. Its location was already supplied, so genuinely new evidence could be a hash reputation result or the parent process. Those were suggested checks, not checks performed on a real executable in this fictional exercise.
+- I initially thought port 80 alone would make B more suspicious. The correction was that HTTP is commonly unencrypted, but encryption and maliciousness are different questions: either port 80 or 443 can carry legitimate or malicious traffic.
+- I correctly said a valid signature would not be enough to stop investigating the unusual location and behaviour.
+
+<details>
+<summary>Core memory — judging suspicious connections</summary>
+
+Use the program, file location, signature, destination and behaviour together. A port number or valid signature alone cannot establish safety. Record what is observed, what is inferred, and which additional evidence is needed.
+
+</details>
