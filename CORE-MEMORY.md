@@ -180,3 +180,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Remember: DHCP gives settings, DNS resolves names, HTTPS/TLS encrypts web traffic
 
 </details>
+
+<details>
+<summary><strong>Day 15 - Subnets and routing</strong></summary>
+
+- Subnet mask helps decide whether a destination is local or remote
+- 255.255.255.0 = /24
+- On this network, 192.168.0.x is local
+- Local destination -> use ARP for the destination MAC
+- Remote destination -> send to the default gateway
+- 0.0.0.0/0 = default route
+- Route table = which path traffic should use
+- Quick memory: Subnet = local? ARP = which MAC? Gateway = where remote traffic goes?
+
+</details>
