@@ -20,3 +20,4 @@ A dated journal of hands-on exercises as I work toward entry-level SOC skills. E
 | 20 September 2026 | [Windows Security Event Log investigation](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Event IDs 4624/4625/4672/4688, logon-type analysis, Logon ID correlation, audit-policy review |
 | 22 September 2026 | [ARP and DNS practice review](practical-labs/2026-09-22-arp-dns-review/README.md) | Gateway identification, ARP comparison, DNS resolution, next-hop interpretation |
 | 22 September 2026 | [TCP ports and handshake practice](practical-labs/2026-09-22-tcp-ports-handshake/README.md) | TCP handshake, process identification, IP versus port distinction; observed ports pending |
+| 24 September 2026 | [Connection logs and timeline practice](practical-labs/2026-09-24-connection-log-timeline/README.md) | Fictional log analysis, repeated attempts, firewall decisions, reviewed questions and answers |
