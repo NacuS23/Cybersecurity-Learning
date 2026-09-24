@@ -207,3 +207,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Quick memory: NAT = addresses, PAT = ports
 
 </details>
+
+
+<details>
+<summary><strong>Day 17 - TCP vs UDP in real traffic</strong></summary>
+
+- TCP = reliable, connection-oriented transport
+- UDP = connectionless transport with no built-in delivery guarantee
+- TCP retransmission = resend unacknowledged data
+- UDP does not use TCP-style ESTABLISHED states
+- DNS usually uses UDP port 53 for normal queries
+- HTTPS normally uses TCP port 443
+- Wireshark can help compare TCP and UDP traffic directly
+
+</details>
