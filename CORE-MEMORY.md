@@ -194,3 +194,16 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Quick memory: Subnet = local? ARP = which MAC? Gateway = where remote traffic goes?
 
 </details>
+
+<details>
+<summary><strong>Day 16 - NAT and PAT</strong></summary>
+
+- NAT = translate private/internal addressing to public-facing addressing
+- PAT = use port mappings to keep many connections separate
+- Many devices can appear to websites as the same public IP
+- Source ports, timestamps and NAT logs can help identify the original connection
+- 127.0.0.1 = localhost only
+- 443 normally means HTTPS
+- Quick memory: NAT = addresses, PAT = ports
+
+</details>
