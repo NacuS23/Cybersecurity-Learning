@@ -1,12 +1,12 @@
 # TCP connection outcome analysis
 
 **Date:** 30 September 2026  
-**Type:** Worked SOC practice scenario  
+**Type:** SOC network analysis practice  
 **Focus:** Distinguishing firewall decisions, TCP connectivity, TLS negotiation and application responses
 
 ## Objective
 
-Review two fictional network cases and determine whether a connection was merely allowed by the firewall, whether the TCP three-way handshake completed, and whether an application-level response was received.
+Analyse firewall, TCP, TLS and application-layer evidence to determine whether a connection was merely allowed, whether the TCP three-way handshake completed, and whether an application-level response was received.
 
 ## Scenario
 
