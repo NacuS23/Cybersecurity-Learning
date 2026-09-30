@@ -221,3 +221,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Wireshark can help compare TCP and UDP traffic directly
 
 </details>
+
+
+<details>
+<summary><strong>Day 18 - SOC-style connection investigation</strong></summary>
+
+- Start with the connection, then identify the PID and process
+- 443 normally means HTTPS, but not automatically safe
+- Check executable path for context
+- Check digital signature for authenticity evidence
+- Reverse DNS failure does not automatically mean malicious
+- Stronger conclusion comes from combining several pieces of evidence
+- Useful flow: connection -> PID -> process -> path -> signature -> destination context
+
+</details>
