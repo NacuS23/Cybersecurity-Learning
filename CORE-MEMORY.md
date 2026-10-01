@@ -235,3 +235,18 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Useful flow: connection -> PID -> process -> path -> signature -> destination context
 
 </details>
+
+
+<details>
+<summary><strong>Day 19 - Process investigation</strong></summary>
+
+- PID = Process ID
+- Parent process = what launched the process
+- Executable path helps show whether a process is running from an expected location
+- Signature status is supporting evidence, not absolute proof
+- NotSigned does not automatically mean malicious
+- Microsoft Store apps can be checked with Get-AppxPackage
+- SignatureKind: Store + Status: Ok gives useful package-level context
+- Temp/AppData executables can deserve more investigation depending on context
+
+</details>
