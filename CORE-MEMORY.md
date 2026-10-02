@@ -250,3 +250,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Temp/AppData executables can deserve more investigation depending on context
 
 </details>
+
+
+<details>
+<summary><strong>Day 20 - Windows services and persistence</strong></summary>
+
+- Service = background program
+- Auto = configured to start automatically
+- PathName = what executable actually runs
+- Persistence = ability to survive/restart after reboot
+- Auto-start + strange path = investigate
+- LocalSystem = high privilege, not automatically malicious
+- Service name, path, startup mode and account should be checked together
+
+</details>
