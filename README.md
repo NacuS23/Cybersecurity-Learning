@@ -22,3 +22,4 @@ A dated journal of hands-on exercises as I work toward entry-level SOC skills. E
 | 22 September 2026 | [TCP ports and handshake practice](practical-labs/2026-09-22-tcp-ports-handshake/README.md) | TCP handshake, process identification, IP versus port distinction; observed ports pending |
 | 24 September 2026 | [Connection logs and timeline practice](practical-labs/2026-09-24-connection-log-timeline/README.md) | Fictional log analysis, repeated attempts, firewall decisions, reviewed questions and answers |
 | 30 September 2026 | [TCP connection outcome analysis](practical-labs/2026-09-30-tcp-connection-outcome-analysis/README.md) | Firewall decisions, TCP handshake analysis, TLS/application-layer interpretation, evidence-based conclusions |
+| 2 October 2026 | [Notepad process command-line investigation](practical-labs/2026-10-02-notepad-process-command-line/README.md) | Process and parent PIDs, command lines, signature verification, reviewed answers |
