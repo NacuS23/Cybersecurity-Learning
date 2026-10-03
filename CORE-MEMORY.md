@@ -264,3 +264,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Service name, path, startup mode and account should be checked together
 
 </details>
+
+
+<details>
+<summary><strong>Day 21 - Startup programs and persistence</strong></summary>
+
+- Persistence = survives/restarts after reboot or login
+- HKLM\...\Run = common startup registry location
+- Command = what executable is launched
+- Path = where the startup executable is running from
+- Valid signature = useful evidence, not absolute proof
+- Microsoft Windows Hardware Compatibility Publisher is consistent with properly signed driver software
+- Temp/AppData startup executable = investigate further
+
+</details>
