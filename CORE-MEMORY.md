@@ -278,3 +278,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Temp/AppData startup executable = investigate further
 
 </details>
+
+
+<details>
+<summary><strong>Day 23 - Triage prioritisation</strong></summary>
+
+- Triage = decide what should be investigated first
+- Several suspicious indicators together matter more than one field alone
+- Check path, parent, command line, signature, network destination and persistence
+- Successful execution does not mean legitimate execution
+- Temp/AppData + unsigned + persistence = higher priority
+- Word -> PowerShell + encoded command + external connection = very high priority
+- Useful questions: Where is it? Who launched it? What is it doing? Where is it connecting? Does it come back?
+
+</details>
