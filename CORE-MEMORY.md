@@ -292,3 +292,21 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Useful questions: Where is it? Who launched it? What is it doing? Where is it connecting? Does it come back?
 
 </details>
+
+
+<details>
+<summary><strong>Day 24 - Windows Security event log investigation</strong></summary>
+
+- 4624 = successful logon
+- 4625 = failed logon
+- 4688 = process creation
+- Logon Type 2 = local / interactive
+- Logon Type 3 = network
+- Logon Type 10 = RDP / remote interactive
+- Main checks: Event ID -> Account -> Logon Type -> Source IP -> Failure reason -> Caller process -> Frequency
+- One failed logon with no remote IP and a legitimate local process is usually low priority
+- Verified msedgewebview2.exe from the expected Microsoft Edge WebView Program Files path
+- Authenticode signature was Valid and signed by Microsoft Corporation
+- Filename alone is weak evidence; path + signature + behaviour + event pattern is much stronger
+
+</details>
