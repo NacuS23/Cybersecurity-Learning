@@ -310,3 +310,22 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Filename alone is weak evidence; path + signature + behaviour + event pattern is much stronger
 
 </details>
+
+
+<details>
+<summary><strong>Day 25 - Process creation and parent-child relationships</strong></summary>
+
+- 4688 = a new process has been created
+- Check: child process -> parent -> command line -> path -> signature -> network behaviour
+- Parent-child relationships help show whether process execution makes sense
+- smss.exe -> autochk.exe can be normal Windows startup activity
+- smss.exe -> csrss.exe can be normal Windows startup activity
+- WINWORD.EXE -> powershell.exe with Bypass + EncodedCommand is high priority
+- Legitimate process names can still be abused
+- Investigated WUDFHost.exe in System32
+- Signature was Valid and signed by Microsoft Windows
+- Parent was services.exe
+- services.exe -> WUDFHost.exe was consistent with normal Windows behaviour
+- Several reassuring signals together can justify low-priority / likely-benign triage
+
+</details>
