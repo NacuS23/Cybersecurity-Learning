@@ -329,3 +329,21 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Several reassuring signals together can justify low-priority / likely-benign triage
 
 </details>
+
+
+<details>
+<summary><strong>Day 26 - PowerShell logging and command building</strong></summary>
+
+- 4104 = PowerShell Script Block Logging
+- 40961/40962 = PowerShell console startup/ready events
+- Large 4104 logs can be normal and may be split into several parts
+- Filter first instead of reading pages of PowerShell output
+- Interesting terms include EncodedCommand, ExecutionPolicy Bypass, Invoke-WebRequest, Invoke-Expression and external URLs
+- One keyword alone does not prove malicious activity
+- Learn PowerShell by understanding each command part, not memorising full commands
+- Core SOC commands: Get-Process, Get-CimInstance, Get-NetTCPConnection, Get-WinEvent, Get-AuthenticodeSignature, Get-FileHash
+- Select-Object chooses fields, Where-Object filters, | passes output to the next command
+- Get-Help can be used when syntax is forgotten
+- From now on, gradually build commands independently instead of only copying them
+
+</details>
