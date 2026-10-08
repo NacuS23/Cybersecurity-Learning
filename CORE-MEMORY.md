@@ -384,3 +384,21 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 
 </details>
 
+
+
+<details>
+<summary><strong>Day 28 - Microsoft Defender investigation</strong></summary>
+
+- Get-MpComputerStatus checks Defender status
+- AntivirusEnabled = True and RealTimeProtectionEnabled = True are reassuring
+- 1116 = threat detected
+- 1117 = Defender took action
+- 5007 = Defender configuration changed
+- 5007 is not automatically suspicious
+- Always inspect the old value and new value
+- UX configuration changes are different from protection being disabled
+- No 1116/1117 events in the current log is reassuring, but not proof that no detection ever happened
+- SOC conclusion should state evidence, assessment, next step and decision
+- Current case: low priority, close
+
+</details>
