@@ -363,3 +363,24 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - WUDFHost.exe had expected path, valid Microsoft signature, sensible parent and 0/70 detections, so it looked likely benign
 
 </details>
+
+<details>
+<summary><strong>Day 28 - PowerShell filtering and connection investigation</strong></summary>
+
+- Where-Object filters records using a condition
+- $_ = the current object being examined
+- Select-Object chooses fields/columns
+- Useful flow: collect -> filter -> select -> display
+- ESTABLISHED = active TCP connection, not proof of safety
+- Map OwningProcess PID -> process -> path -> signature
+- Valid Microsoft path + signature strongly supports executable legitimacy
+- Process legitimacy and destination safety are separate questions
+- Remote IP/port provide destination context
+- 443 normally means HTTPS, not automatically safe
+- Reverse DNS failure does not automatically mean malicious
+- DNS cache can help correlate a hostname with an IP
+- Cloud/CDN infrastructure can serve many different websites
+- Final SOC judgement should combine process, path, signature, destination and behaviour
+
+</details>
+
