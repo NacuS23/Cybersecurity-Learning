@@ -347,3 +347,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - From now on, gradually build commands independently instead of only copying them
 
 </details>
+
+
+<details>
+<summary><strong>Day 27 - File hashes and reputation</strong></summary>
+
+- Get-FileHash calculates a file hash
+- SHA256 can be used as a fingerprint for an exact file
+- Same exact file = same SHA256 hash
+- VirusTotal can search a hash without scanning my computer
+- 0/70 detections is reassuring, not proof of safety
+- Unknown hash does not automatically mean malicious
+- Reputation is supporting evidence, not the final decision
+- For suspicious files check: path -> parent -> signature -> command line -> behaviour -> network -> persistence -> hash/reputation
+- WUDFHost.exe had expected path, valid Microsoft signature, sensible parent and 0/70 detections, so it looked likely benign
+
+</details>
