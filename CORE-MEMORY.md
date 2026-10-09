@@ -402,3 +402,22 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Current case: low priority, close
 
 </details>
+
+
+<details>
+<summary><strong>Day 29 - Windows service installation investigation</strong></summary>
+
+- 7045 = a service was installed in Windows
+- 7045 does not automatically mean malware
+- Check: service name -> file path -> start type -> account -> signature -> context
+- Auto start = persistence
+- LocalSystem = high privilege
+- User mode service is not suspicious by itself
+- Investigated MSI Center Service
+- Path was under the expected MSI Program Files directory
+- Signature was Valid and signer matched MICRO-STAR INTERNATIONAL CO., LTD.
+- Service was still running and other MSI services were also present
+- Final assessment: low priority / likely legitimate -> close
+- Suspicious example: Temp path + auto start + LocalSystem + fake Windows-style name = escalate
+
+</details>
