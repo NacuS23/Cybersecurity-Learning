@@ -421,3 +421,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Suspicious example: Temp path + auto start + LocalSystem + fake Windows-style name = escalate
 
 </details>
+
+<details>
+<summary><strong>Day 30 - Service persistence validation</strong></summary>
+
+- Auto-start service = persistence, not automatically malware
+- LocalSystem = high privilege, so executable validation matters
+- Check service -> startup mode -> account -> path -> signature -> PID -> running process
+- Program Files path is generally more reassuring than a user-writable Temp/AppData path
+- Privileged auto-start service from Temp/AppData = investigate further
+- Investigated Adobe Acrobat Update Service
+- Executable path matched the expected Adobe ARM location
+- Signature was Valid and signer was Adobe Inc.
+- Running armsvc process matched the configured service executable
+- Final assessment: low suspicion / likely legitimate persistence -> no escalation
+
+</details>
+
