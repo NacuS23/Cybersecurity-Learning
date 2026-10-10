@@ -280,6 +280,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 </details>
 
 
+
+<details>
+<summary><strong>Day 22 - Scheduled tasks and persistence</strong></summary>
+
+- Scheduled tasks can run on startup, logon, a schedule, or an event
+- Scheduled tasks can be used for normal automation or persistence
+- Check TaskPath, action, trigger, and run history
+- Some tasks use COM handlers rather than an executable path
+- Investigated the .NET Framework NGEN task
+- Task had a COM handler and a nonzero last result
+- A failed task does not automatically mean malicious activity
+
+</details>
+
 <details>
 <summary><strong>Day 23 - Triage prioritisation</strong></summary>
 
