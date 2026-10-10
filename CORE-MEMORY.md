@@ -452,3 +452,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 
 </details>
 
+
+
+<details>
+<summary><strong>Day 30 - Windows event correlation</strong></summary>
+
+- Event correlation = connecting events by time, account, process, machine and other evidence
+- 4624 = successful logon; 4688 = new process; 7045 = service installed
+- Logon Type 10 = remote interactive (RDP)
+- Close timestamps are a clue, not proof events were caused by the same activity
+- Checked four MSI-related services installed within 25 seconds
+- All four executables had Valid signatures from Micro-Star International
+- Auto start and LocalSystem can be legitimate, but matter when assessing persistence and privilege
+- SOC conclusion: likely benign MSI installation activity; low priority; close
+- Digital signatures support authenticity but do not prove behaviour is safe
+
+</details>
