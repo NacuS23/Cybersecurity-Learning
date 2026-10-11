@@ -468,3 +468,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Digital signatures support authenticity but do not prove behaviour is safe
 
 </details>
+
+
+<details>
+<summary><strong>Day 31 - Scheduled task investigation</strong></summary>
+
+- Task Scheduler Operational event IDs: 106 = registered, 140 = updated, 200 = action started, 201 = action completed
+- The Operational log was disabled; missing events do not mean tasks were never created or run
+- Get-ScheduledTask lists existing tasks
+- Task **action** = what executes; **trigger** = when it executes
+- Investigated OneDC_Updater: expected MSI updater executable path
+- Digital signature was Valid and signer matched Micro-Star International
+- Enabled logon and daily triggers were consistent with updater activity
+- Ready = waiting for a trigger, not currently running
+- An old StartBoundary is not necessarily the task creation date
+- SOC conclusion: low priority / likely benign, close based on evidence; historical executions not verified
+
+</details>
