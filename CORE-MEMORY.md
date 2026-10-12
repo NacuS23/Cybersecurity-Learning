@@ -485,3 +485,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - SOC conclusion: low priority / likely benign, close based on evidence; historical executions not verified
 
 </details>
+
+
+<details>
+<summary><strong>Day 32 - ATT&CK and analyst triage</strong></summary>
+
+- Tactic = an objective; technique = a way of achieving it
+- Persistence means keeping access; privilege escalation means gaining additional permissions
+- Checked OneDC_Updater: GroupId Users, LogonType Group, RunLevel Highest
+- Highest does not automatically mean Administrator or SYSTEM
+- Analysed a fictional sequence of remote sign-in, script execution and scheduled-task creation
+- Related timestamps suggest a hypothesis but do not prove causation
+- Assessment in the exercise: high priority, escalate for verification
+
+</details>
