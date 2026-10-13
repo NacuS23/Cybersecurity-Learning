@@ -499,3 +499,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Assessment in the exercise: high priority, escalate for verification
 
 </details>
+
+
+<details>
+<summary><strong>Day 33 - Local accounts and administrator auditing</strong></summary>
+
+- Get-LocalGroupMember -Group "Administrators" shows local administrator group members
+- Get-LocalUser shows local accounts, enabled status, and available last-logon information
+- My PC showed the expected admin-group accounts; only my normal local account was enabled
+- 4720 = user account created
+- 4732 = member added to a security-enabled local group; check which group
+- 4624 with Logon Type 10 = successful remote interactive (RDP) login
+- No matching 4720/4732 records in current logs does not prove no historical changes
+- auditpol showed Success for User Account Management and Security Group Management
+- Simulated case: unexpected account created, added to Administrators, then used for unfamiliar RDP login
+- SOC conclusion for simulation: High priority; verify authorisation, source, account changes and follow-on activity; escalate
+
+</details>
