@@ -516,3 +516,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - SOC conclusion for simulation: High priority; verify authorisation, source, account changes and follow-on activity; escalate
 
 </details>
+
+
+<details>
+<summary><strong>Day 34 - Privileged logons and event correlation</strong></summary>
+
+- 4624 = successful logon; 4672 = special privileges assigned at logon; 4688 = process creation
+- Logon Type 2 = interactive; 3 = network; 5 = service; 10 = remote interactive (RDP)
+- Logon Type tells *how* someone/something logged in; Logon ID helps associate events with the session
+- Real logs: SYSTEM (SID S-1-5-18) and Logon ID 0x3E7 appeared repeatedly in 4672 and service-type 4624 events; normal pattern, not proof of compromise
+- In 4624, Subject is the requester, New Logon is the account signing in, and Process Name is not a source IP
+- Real DWM-22 interactive logons were Windows virtual desktop account activity, including linked elevated/non-elevated tokens
+- A limited search for non-DWM/UMFD interactive or RDP records found no matching results; this does not prove no user logons occurred
+- 4672 and Elevated Token: Yes are not by themselves evidence of attacker privilege escalation
+- Simulated case: unfamiliar RDP logon, same-ID privileged-logon event, then encoded PowerShell; high priority, escalate and verify authorisation and activity
+- Key memory: Logon Type 10 = RDP; matching Logon IDs link related events (consider timestamps and host, especially for SYSTEM 0x3E7)
+
+</details>
