@@ -533,3 +533,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key memory: Logon Type 10 = RDP; matching Logon IDs link related events (consider timestamps and host, especially for SYSTEM 0x3E7)
 
 </details>
+
+
+<details>
+<summary><strong>Day 35 - Failed logons and password attack detection</strong></summary>
+
+- Windows Security Event 4625 = failed logon; 4624 = successful logon; 4740 = account locked out; 4720 = account created
+- Real practical: queried Event 4625 and found no matching events in retained Security log
+- `auditpol /get /subcategory:"Logon"` showed Success and Failure auditing enabled
+- No matching recorded failures does not prove there were never any failed logins
+- Brute-force guessing: many password attempts targeting one account
+- Password spraying: one or a few passwords tried across many accounts
+- Credential stuffing: trying username/password pairs exposed in prior breaches
+- Simulated case: 20 failed logons, then one successful logon from the same IP, followed by PowerShell; assessed High and escalated for investigation
+- Check whether access was authorised, correlate account/source/time/logon type, and inspect subsequent PowerShell activity
+- Core distinction: suspicious event sequence is evidence for investigation, not proof of attacker compromise
+
+</details>
