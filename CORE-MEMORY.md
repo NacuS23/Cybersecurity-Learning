@@ -550,3 +550,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Core distinction: suspicious event sequence is evidence for investigation, not proof of attacker compromise
 
 </details>
+
+
+<details>
+<summary><strong>Day 36 - Account lockouts and Windows policy</strong></summary>
+
+- Event 4740 = user account locked out; 4625 = failed logon; 4624 = successful logon
+- Queried Security log for Event 4740; no retained matching records were found locally
+- Event 4740 Caller Computer Name can be a clue; domain-account lockouts are often investigated on domain controllers
+- Read-only command: `net accounts`
+- Actual local workstation policy: lockout threshold 10; lockout duration 10 minutes; observation window 10 minutes
+- Other local settings: minimum password length 0; password history None; maximum password age 42 days; not necessarily online Microsoft-account rules
+- An attacker could deliberately trigger account lockouts without knowing the correct password
+- Simulated scenario: employee's old saved application password likely caused repeated failures and a lockout
+- SOC assessment: low priority when contextual evidence supports a routine cause; confirm source, fix saved credentials and verify failures stopped before closing
+- Key lesson: a plausible benign explanation needs validation before closing an alert
+
+</details>
