@@ -567,3 +567,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key lesson: a plausible benign explanation needs validation before closing an alert
 
 </details>
+
+
+<details>
+<summary><strong>Day 37 - PowerShell logging, process IDs and audit gaps</strong></summary>
+
+- Event 4104 = PowerShell script-block logging; 4688 = process creation (if audited); 4624 = successful logon
+- Used a calculated Select-Object `Preview` property to inspect only the first 200 characters of three 4104 records
+- Actual 4104 event process IDs: 18152 (16 Oct), 6412 (15 Oct), 7388 (13 Oct)
+- PID identifies a process, not a person; correlate PID with timestamps because Windows can reuse IDs
+- Searched for 4688 matching PID 18152 (`0x46e8`) near 16 Oct 20:52; no matching record returned
+- `auditpol /get /subcategory:"Process Creation"` returned `No Auditing`; this is consistent with the missing 4688 record but does not establish earlier audit settings
+- Nothing in the three short script previews alone proved malicious activity; the third contained familiar file-hash practice code
+- Simulated scenario: unfamiliar Administrator RDP login followed by PowerShell download activity with missing process telemetry
+- SOC response: High priority, escalate and verify RDP authorisation, script content and available other logs; recommend separate process-auditing review
+- Key lesson: missing event telemetry creates uncertainty; lack of a matching log event does not establish safety
+
+</details>
