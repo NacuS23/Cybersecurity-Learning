@@ -2,7 +2,7 @@
 
 Date: 22 October 2026
 
-**Assisted worked example:** This solution was prepared with ChatGPT at my request as a study reference. It is not an independently completed assessment or a review of a real company's accounts. No permissions were changed.
+Study notes on a fictional access-review exercise. All accounts and permissions below are supplied training data; no real permissions were changed.
 
 ## Objective and core idea
 
@@ -21,7 +21,7 @@ Assume these job requirements are complete and Lee's contract has not been exten
 | `backup-service` | Read payroll files to make backups | Read payroll and manage payroll permissions |
 | `lee-contractor` | Edit project documents until 17 October | Edit project documents; access remains active on 22 October |
 
-## Worked access review
+## Access review
 
 | Account | Access needed | Extra or expired access | Smallest recommended change |
 |---|---|---|---|
@@ -32,7 +32,7 @@ Assume these job requirements are complete and Lee's contract has not been exten
 
 These recommendations follow the simplified requirements. In a real environment, confirm dependencies with the resource owner, obtain the required approval, and check that authorised work still functions after a change. A backup product may have additional documented requirements not present in this exercise.
 
-## Example SOC note
+## SOC note
 
 **Observed fact:** The fictional `backup-service` account can read payroll files and manage payroll permissions, although its documented task requires only reading payroll for backups.
 
