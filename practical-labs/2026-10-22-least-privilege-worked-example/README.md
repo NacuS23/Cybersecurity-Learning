@@ -52,3 +52,47 @@ These recommendations follow the simplified requirements. In a real environment,
 ## Takeaway
 
 Compare the job requirement with actual access, identify the gap, explain the risk, and recommend the smallest justified change. A permissions problem is a finding to investigate, not automatic proof of an attack.
+
+## My follow-up practice answers
+
+These are my answers to follow-up scenarios, with the clarifications from the review.
+
+### 1. Experience versus job duties
+
+**Scenario:** A reporting account only needs to read sales reports but can also delete them.
+
+My initial answer was that an experienced person could have both permissions, while a new employee should only have Read.
+
+**Correction:** Permissions should follow job duties, not experience. If the job only requires reading reports, Delete is unnecessary even for an experienced employee.
+
+**Follow-up:** Someone has worked in finance for ten years, but their job only requires viewing payroll. Should they have Edit permission?
+
+My answer:
+
+> If the job only requires to view payroll they shouldn't have any power to change. they just report further up for any changes that need to be done
+
+**Review:** Correct. Keep Read access and refer requested changes to someone authorised to make them.
+
+### 2. Backup account
+
+**Scenario:** A backup account needs to read payroll files. It can also change who has access to payroll. Which permission should be removed?
+
+My answer:
+
+> Change the access to change the access of controlling who can have access.
+
+**Clarification:** Remove the permission to change who can access payroll. Keep Read, which is required for the stated backup task.
+
+### 3. Contractor access
+
+**Scenario:** A contractor's work ended last Friday, with no extension or further assignment, but project access remains active.
+
+My answer:
+
+> The project should not be active and they shouldn't have access to it until there is a need for it. for security purposes
+
+**Review:** The access-removal decision is correct. The contractor's access should end; the project itself can remain active for other authorised people. Access can be approved again if a new job requires it.
+
+### Learning point from the review
+
+Keep only the permissions required for the task, and remove access when the need ends. This applies to employees, software accounts and contractors.
