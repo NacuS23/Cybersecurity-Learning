@@ -584,3 +584,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key lesson: missing event telemetry creates uncertainty; lack of a matching log event does not establish safety
 
 </details>
+
+
+<details>
+<summary><strong>Day 38 - Building a Windows incident timeline</strong></summary>
+
+- Combined PowerShell Operational Event 4104 and Security Event 4624 using $start, $end, arrays, +, and Sort-Object TimeCreated
+- Actual 16 Oct 2026 sample: six 4624 events around 20:52:45-20:53:07, with one 4104 at 20:52:47 (PowerShell PID 18152)
+- Inspected one 4624 at 20:52:46: service logon Type 5, NT AUTHORITY\\SYSTEM, Logon ID 0x3E7, services.exe, no remote source IP
+- Filtered the collected six 4624 records for Logon Type 2 or 10; none matched; not proof all were Type 5
+- Event metadata ProcessId for 4624 is not necessarily the process belonging to the newly logged-on account
+- A service logon one second before a PowerShell script is not evidence that the service launched PowerShell
+- Process Creation auditing had been found disabled on Day 37, restricting parent process visibility
+- SOC assessment: no malicious behaviour established; PowerShell process origin not identified
+- Key lesson: a time-ordered sequence suggests leads but does not demonstrate causation; write confirmed facts separately from hypotheses and unknowns
+
+</details>
