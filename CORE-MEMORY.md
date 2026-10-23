@@ -600,3 +600,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key lesson: a time-ordered sequence suggests leads but does not demonstrate causation; write confirmed facts separately from hypotheses and unknowns
 
 </details>
+
+
+<details>
+<summary><strong>Day 39 - Parent-child process investigation</strong></summary>
+
+- Investigated my live PowerShell session using `Get-CimInstance Win32_Process -Filter "ProcessId = $PID"`
+- Real result: powershell.exe PID 20516, ParentProcessId 24240, started 23 Oct 2026 at 15:28
+- Identified parent as explorer.exe PID 24240, parent PID 4736, created at 15:22:35, path C:\\WINDOWS\\Explorer.EXE
+- `Get-AuthenticodeSignature` on Explorer showed Status Valid, signer Microsoft Windows
+- Real process tree explorer.exe -> powershell.exe was consistent with ordinary desktop activity; low concern based on available evidence
+- ParentProcessId identifies the recorded parent, not the person responsible; creation times matter because PIDs can be reused
+- Simulated SOC case: unfamiliar email attachment opened in WINWORD.EXE PID 4100 -> encoded PowerShell PID 5200 with ParentProcessId 4100 -> attempted external download
+- Assessment in simulation: high priority; investigate encoded script, downloaded files and possible persistence; escalate
+- Key distinction: a recorded process relationship gives stronger evidence than events merely occurring at nearby timestamps, but it does not prove malicious intent
+
+</details>
