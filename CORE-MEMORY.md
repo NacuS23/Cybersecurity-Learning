@@ -616,3 +616,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key distinction: a recorded process relationship gives stronger evidence than events merely occurring at nearby timestamps, but it does not prove malicious intent
 
 </details>
+
+
+<details>
+<summary><strong>Day 40 - Network connections and process attribution</strong></summary>
+
+- Used `Get-NetTCPConnection -State Established` to inspect local/remote IPs, ports and owning PIDs
+- Observed eight established connections using remote TCP port 443; port alone does not prove HTTPS or safety
+- Local interface address was private (`172.16.0.0/12` range); the meaning of the final IP octet depends on subnet mask
+- PID 13108 owned multiple connections in an earlier snapshot; a later `Get-CimInstance` lookup returned nothing, possibly because it exited
+- Captured another connection: `162.159.128.232:443` owned by PID 1408
+- `Get-CimInstance Win32_Process -Filter "ProcessId = 1408"` identified Discord.exe, ParentProcessId 15508, path under AppData\\Local\\Discord
+- `Get-AuthenticodeSignature` reported Status Valid, signer Discord Inc.
+- SOC assessment: likely expected application traffic if Discord knowingly installed/running; no malicious behaviour established, destination ownership and contents not independently verified
+- Main workflow: connection -> owning PID -> process name/path -> digital signature -> contextual assessment
+- Multiple connections from one application are not suspicious by count alone; live process information changes rapidly
+
+</details>
