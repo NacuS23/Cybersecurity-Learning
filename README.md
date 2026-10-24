@@ -30,3 +30,4 @@ A dated journal of hands-on exercises as I work toward entry-level SOC skills. E
 | 11 October 2026 | [OneDC_Updater scheduled task investigation](practical-labs/2026-10-11-onedc-updater-scheduled-task-investigation/README.md) | Scheduled-task persistence, actions and triggers, run level, Authenticode validation, file metadata correlation |
 | 15 October 2026 | [Explorer process record and variables](practical-labs/2026-10-15-explorer-process-record-variables/README.md) | Process properties, PID and path, variable assignment, reviewed answers |
 | 22 October 2026 | [Least privilege — study notes](practical-labs/2026-10-22-least-privilege-worked-example/README.md) | Fictional access review, authorisation, minimum permissions, knowledge-check answers |
+| 24 October 2026 | [Valid signatures and suspicious behaviour](practical-labs/2026-10-24-signatures-and-behaviour-triage/README.md) | Fictional alert triage, signature limitations, process context, reviewed answers |
