@@ -633,3 +633,20 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Multiple connections from one application are not suspicious by count alone; live process information changes rapidly
 
 </details>
+
+
+<details>
+<summary><strong>Day 41 - DNS investigation and logging</strong></summary>
+
+- Used `Get-DnsClientCache` to inspect ten cached DNS records from Steam, Microsoft cloud services, NVIDIA telemetry and certificate infrastructure
+- A record (type 1) maps a domain to IPv4; CNAME (type 5) maps a domain to another domain; SOA gives DNS zone information
+- `Resolve-DnsName settings-win.data.microsoft.com` demonstrated a CNAME -> CNAME -> A resolution chain
+- The standard Sysmon Operational log was not found with `Get-WinEvent -ListLog`; Sysmon Event 22 can associate DNS queries with processes when configured
+- `Microsoft-Windows-DNS-Client/Operational` existed but had IsEnabled False
+- No DNS-logging settings were changed
+- DNS cache presence does not establish that an application connected, downloaded a file, or executed it
+- Simulated case: PowerShell PID 6200 queried a domain, connected externally on 443, and an unsigned executable appeared soon after without approved update
+- High priority and escalate; examine DNS/connection/file records, file hash and reputation, execution evidence and persistence
+- Key lesson: DNS query != network connection != downloaded file != executed file; each needs its own evidence
+
+</details>
