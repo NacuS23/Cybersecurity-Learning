@@ -650,3 +650,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key lesson: DNS query != network connection != downloaded file != executed file; each needs its own evidence
 
 </details>
+
+
+<details>
+<summary><strong>Day 42 - File inspection, MZ headers and Prefetch evidence</strong></summary>
+
+- Inspected `Microsoft.Services.Store.winmd` from Downloads: 5,120 bytes, created/modified 27 Aug 2026
+- SHA256 via `Get-FileHash`: 45715793B8C8571554B0BFB4ECCC29E2884C16481E1C7DBEE78363BBE4DA3DD9; hash alone is not a malware verdict
+- `Format-Hex` showed first bytes 4D 5A (ASCII MZ) and standard DOS-stub message; an MZ/PE container signature does not prove execution
+- `Get-AuthenticodeSignature` for the .winmd returned NotSigned; this alone does not prove malware
+- Used `Get-Process -Name "*notepad*"` and found Notepad running, PID 12388, started 26 Oct 2026 18:45:59
+- Found `NOTEPAD.EXE-0D1583A9.pf` under Windows Prefetch, last modified 26 Oct at 18:46:09
+- Windows Prefetch helps application startup but can provide forensic evidence consistent with previous execution; artifact times and names need careful interpretation
+- Simulated case: unsigned update.exe in Temp, zero hash reputation detections, no current process, matching Prefetch artifact; escalate and investigate origin, artifact, execution evidence and persistence
+- Main distinction: file presence != file format != currently running process != historical execution != proven malware
+
+</details>
