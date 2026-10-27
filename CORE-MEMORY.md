@@ -666,3 +666,18 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Main distinction: file presence != file format != currently running process != historical execution != proven malware
 
 </details>
+
+
+<details>
+<summary><strong>Day 43 - Prefetch, version verification and revoked code-signing certificate</strong></summary>
+
+- Listed 10 recent `.pf` artifacts using `Get-ChildItem "$env:WINDIR\Prefetch" -Filter "*.pf"`, `Sort-Object LastWriteTime -Descending` and `Select-Object -First 10`
+- Found Prefetch files for CONSENT.EXE, DTSHELLHLP.EXE, DISCSOFTBUSSERVICELITE.EXE, RUNDLL32.EXE, MSEDGEWEBVIEW2.EXE, AUDIODG.EXE and SVCHOST.EXE; the two unfamiliar names were associated with DAEMON Tools Lite
+- Checked Windows uninstall registry with `Get-ItemProperty`; installed DAEMON Tools Lite reported **12.1.0.2211**, outside the specific reported 2026 supply-chain affected range **12.5.0.2421–12.5.0.2434**
+- `Get-Item` and `VersionInfo.FileVersion` for DTShellHlp.exe also reported **12.1.0.2211**, with displayed LastWriteTime **26 Sep 2024**; a version match and file timestamp are supporting evidence, not proof of safety
+- `Get-AuthenticodeSignature` reported signer certificate subject **AVB Disc Soft, SIA**, but `Status: UnknownError`; `StatusMessage: A certificate was explicitly revoked by its issuer`. A revoked certificate prevents treating its signature as valid and warrants investigation, but does not alone prove malware
+- SHA256 for DTShellHlp.exe: **6396460EE441DD2D083F5B1511A513EC8DE606AF8B66B09D8924B92E4B13285F**. Calculating a hash is **not** a malware scan or a clean verdict; no independent hash match or malware verdict was established in the lesson
+- SOC outcome: **malware not confirmed, certificate concern unresolved**. Suggested follow-ups include a full Defender scan, reliable hash comparison and reinstalling or uninstalling old software as appropriate (none of those actions verified performed)
+- Remember: Prefetch supports prior execution investigation but isn't proof of malicious behaviour; distinguish signature presence, certificate validity, malware reputation and actual behaviour
+
+</details>
