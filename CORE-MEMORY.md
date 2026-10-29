@@ -681,3 +681,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Remember: Prefetch supports prior execution investigation but isn't proof of malicious behaviour; distinguish signature presence, certificate validity, malware reputation and actual behaviour
 
 </details>
+
+
+<details>
+<summary><strong>Day 44 - Microsoft Defender detection and remediation triage</strong></summary>
+
+- Used `Get-MpComputerStatus` to inspect Defender: `AMServiceEnabled=True`, `AntivirusEnabled=True`, `RealTimeProtectionEnabled=True`; antivirus definitions last updated **29 Oct 2026 08:13:13**
+- A quick scan end time was recorded for **26 Oct 2026 19:55:32**; `FullScanEndTime` returned no value (not proof a full scan never ran)
+- `Get-MpThreatDetection` returned no records in the lesson; this does not prove malware has never been present
+- Queried `Microsoft-Windows-Windows Defender/Operational` for **1116** (detection) and **1117** (remediation action) with `Get-WinEvent`; no results were returned. `-ErrorAction SilentlyContinue` can hide query errors
+- Also reviewed **5007**, which records Defender configuration changes
+- `ActionSuccess=True` means a recorded remediation action succeeded; `ActionSuccess=False` means it was unsuccessful and requires investigation
+- Simulated SOC case (not actual machine activity): `FINANCE-PC-04`, `invoice.exe`, Defender 1116 plus 1117, `ActionSuccess=False`, no currently running process; **High priority** training assessment and further investigation warranted
+- Suggested checks: inspect remediation failure, verify file presence, look for historical execution evidence, calculate SHA256 and check relevant reputation information, escalate or isolate per incident procedures when justified
+- **Key lesson:** Detection != remediation != successful remediation. No current process and no matching logs do not prove a threat never ran; a SHA256 hash is a fingerprint, not a malware verdict
+
+</details>
