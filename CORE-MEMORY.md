@@ -697,3 +697,18 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - **Key lesson:** Detection != remediation != successful remediation. No current process and no matching logs do not prove a threat never ran; a SHA256 hash is a fingerprint, not a malware verdict
 
 </details>
+
+
+<details>
+<summary><strong>Day 45 - PowerShell script block investigation (Event 4104)</strong></summary>
+
+- Used `Get-WinEvent -ListLog "Microsoft-Windows-PowerShell/Operational"` to confirm PowerShell Operational channel `IsEnabled=True`, with **613 total event records** (not 613 Event 4104 records)
+- Queried Event **4104**, the PowerShell script-block logging event. Most recent five were **Warning** level, all timestamped **29 Oct 2026 15:40:05**
+- Expanded a 4104 event's message and found generated-looking PowerShell wrappers for Defender `root\Microsoft\Windows\Defender\MSFT_MpBehavioralNetworkBlockingRules`, including definitions for `Get-MpBehavioralNetworkBlockingRules` and `Remove-MpBehavioralNetworkBlockingRules`, plus `Export-ModuleMember`
+- Key conclusion: **Defining/exporting a function is not proof that anyone called it or that Defender rules were removed**. Warning severity doesn't independently prove malicious activity
+- Analysed five `ScriptBlockId` values using `$_.Properties[3].Value`; all **five distinct IDs**, timestamped alike, and all message text matched `MSFT_Mp` in `MentionsDefender` check
+- SOC case: real logs suggest Defender-related module script blocks; **no observed evidence of rule removal or malicious activity in reviewed material**, low concern on available evidence. Next steps only if needed: correlate surrounding PowerShell events and process telemetry, and Defender configuration changes via Event **5007**
+- Prefetch may show historical PowerShell execution but doesn't reveal commands, whereas 4104 can show script-block text. Avoid equating log absence with absence of execution
+- Practice demonstrated read-only event triage, comparing timestamps and IDs, and documenting the distinction between observed code and executed action
+
+</details>
