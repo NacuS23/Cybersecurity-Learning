@@ -31,3 +31,4 @@ A dated journal of hands-on exercises as I work toward entry-level SOC skills. E
 | 15 October 2026 | [Explorer process record and variables](practical-labs/2026-10-15-explorer-process-record-variables/README.md) | Process properties, PID and path, variable assignment, reviewed answers |
 | 22 October 2026 | [Least privilege — study notes](practical-labs/2026-10-22-least-privilege-worked-example/README.md) | Fictional access review, authorisation, minimum permissions, knowledge-check answers |
 | 24 October 2026 | [Valid signatures and suspicious behaviour](practical-labs/2026-10-24-signatures-and-behaviour-triage/README.md) | Fictional alert triage, signature limitations, process context, reviewed answers |
+| 31 October 2026 | [Configuration-change timeline](practical-labs/2026-10-31-configuration-change-timeline/README.md) | Fictional protection-gap analysis, settings interpretation, event ordering, reviewed conclusions |
