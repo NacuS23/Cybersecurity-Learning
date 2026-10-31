@@ -9,6 +9,10 @@ My hands-on journey learning networking, Cybersecurity and SOC analysis and more
 
 [Networking fundamentals — Days 1–14](01-networking-fundamentals/)
 
+## TryHackMe
+
+[View my TryHackMe learning journal](tryhackme/README.md)
+
 ## Practical labs
 
 A dated journal of hands-on exercises as I work toward entry-level SOC skills. Each write-up records the steps taken, evidence observed, lessons learned and limits of the investigation.
