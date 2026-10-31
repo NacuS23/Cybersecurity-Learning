@@ -712,3 +712,18 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Practice demonstrated read-only event triage, comparing timestamps and IDs, and documenting the distinction between observed code and executed action
 
 </details>
+
+
+<details>
+<summary><strong>Day 46 - Microsoft Defender configuration changes (Event 5007)</strong></summary>
+
+- Used read-only `Get-WinEvent` with Defender Operational `Id=5007` to inspect three real configuration-change events on 30–31 Oct 2026
+- `ToastOrSsoTrigger` under `HKLM\SOFTWARE\Microsoft\Windows Defender\UX Configuration` changed `0x0 -> 0x1` on **30 Oct 17:32:38** and `0x1 -> 0x0` on **31 Oct 14:50:15**; these values alone do **not** establish antivirus was disabled
+- `WdConfigHash` under `...\CoreService` changed `0x390D7929 -> 0xE586D652` on **30 Oct 15:03:58**; specific underlying cause wasn't determined
+- Day 45 Defender-related PowerShell Event **4104** warnings occurred on **29 Oct 15:40:05**, while the reviewed 5007 events were on 30–31 Oct; no causal link demonstrated. Close timestamps alone would not establish causation either
+- `Get-MpComputerStatus` reported **True** for `AntivirusEnabled`, `RealTimeProtectionEnabled`, `BehaviorMonitorEnabled` and `IsTamperProtected` at time of check
+- Current protections being enabled doesn't prove they were **never disabled historically**
+- SOC outcome: **Low concern on reviewed evidence**, no proven malicious Defender setting change, exact change cause unverified; look for complementary process logs, 4104 records, 5007 changes and alert context if needed
+- Key habit: Separate *configuration change*, *actual security-control disablement*, *historical state*, and *attribution to a process/person* before claiming an attack
+
+</details>
