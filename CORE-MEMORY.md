@@ -727,3 +727,18 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key habit: Separate *configuration change*, *actual security-control disablement*, *historical state*, and *attribution to a process/person* before claiming an attack
 
 </details>
+
+
+<details>
+<summary><strong>Day 47 - Cross-log incident timeline and event correlation</strong></summary>
+
+- Combined most recent **three PowerShell 4104** and **three Defender 5007** events using arrays `@(...)`, array concatenation `+`, and `Sort-Object TimeCreated` to produce one chronological timeline
+- Observed 4104 entries on **31 Oct 2026 14:59:52**, followed by Defender 5007 at **15:09:13**, **19:18:43**, and **1 Nov 2026 15:11:00**. First Defender event followed PowerShell by **9 min 21 sec**, but temporal order does not prove causation
+- Inspected Event 5007 at 15:09:13: Defender `CoreService\WdConfigHash` changed **0xE586D652 -> 0x9EEDB5AF**. Does **not** prove Defender antivirus was disabled or identify the cause
+- Checked all PowerShell 4104 events between 14:59 and 15:01 for `MSFT_Mp|Windows\\Defender` and `Invoke-WebRequest|DownloadFile|Start-BitsTransfer`: multiple script blocks mentioned Defender; **none of the displayed records matched these specific download strings**. Keyword matches are not proof of commands executing, and negative keyword searches don't exclude other techniques
+- Searched Defender Operational events **5000** (real-time protection enabled), **5001** (disabled), **5004** (configuration change) on 31 Oct; **no matching output was returned**. Error suppression and log limitations prevent claiming absolute absence of protection changes
+- Hypothetical training example: a real 5001 at 15:05 followed by 5000 at 15:10 would indicate an approximately 5-minute protection gap; **this did not occur in observed results**
+- SOC conclusion: No evidence in reviewed records proving an attack, download, real-time protection interruption, or causal link between 4104 and 5007; **low concern on available evidence**, with findings bounded by queried records
+- **Key lesson:** chronological sequence != causality; event description != security impact; lack of matching telemetry != proof nothing happened
+
+</details>
