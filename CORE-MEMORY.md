@@ -742,3 +742,24 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - **Key lesson:** chronological sequence != causality; event description != security impact; lack of matching telemetry != proof nothing happened
 
 </details>
+
+
+<details>
+<summary><strong>Day 48 - Windows authentication events and logon types</strong></summary>
+
+- Investigated Windows **Security Event 4625** (failed authentication) over a seven-day window using `Get-WinEvent`; returned **NoMatchingEventsFound**. Lack of returned events does not prove authentication failures never occurred
+- Inspected most recent ten **Event 4624** (successful logon) records and found all were **Logon Type 5 (service)**, with extracted source IP shown as `-`
+- Grouped 200 most recent Event 4624 records with `Group-Object { $_.Properties[8].Value }`:
+  - **Type 5 (service): 162**
+  - **Type 7 (workstation unlock): 10**
+  - **Type 11 (cached interactive): 18**
+  - **Type 2 (interactive): 10**
+  - No **Type 3** (network) or **Type 10** (Remote Desktop) appeared **among the sampled 200 records**. This doesn't rule out older entries
+- Filtered event records for Types **2, 7, 11**; observed recent unlock/cached-interactive events for the user's account **(personal email redacted)** and desktop-related `DWM-14` and `UMFD-14` accounts in Type 2 results
+- Reminder: a cluster of same-time events does not mean multiple different human users; 50 Type 3 logons would mean **50 events**, not 50 distinct remote users
+- Reviewed hypothetical **15 failed attempts followed by a successful login**: investigate the same account, source address, logon type and other context before concluding compromise
+- Also reviewed **Event 4740** (account locked out) as useful for subsequent brute-force investigations
+- SOC result: **low concern for the reviewed samples; no suspicious or unauthorised authentication established**, with historical/logging limits clearly stated
+- Key habit: authenticate using evidence from account, source, time and logon type; don't equate an empty query with proof nothing happened
+
+</details>
