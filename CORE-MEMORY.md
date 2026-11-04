@@ -763,3 +763,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Key habit: authenticate using evidence from account, source, time and logon type; don't equate an empty query with proof nothing happened
 
 </details>
+
+
+<details>
+<summary><strong>Day 49 - Account lockout investigation and local policy</strong></summary>
+
+- Queried Windows Security Event **4740** (account lockout) for last 30 days with `Get-WinEvent`; **no matching records returned**. This doesn't prove no account lockouts ever happened, since auditing and the authentication location matter
+- Ran read-only `net accounts` on Windows workstation and observed local lockout threshold **10**, duration **10 minutes**, observation window **10 minutes**; local policy isn't necessarily the policy applied to cloud/domain accounts
+- Other reported local policy fields: password max age **42 days**, minimum length **0**, password history **None**; these do not establish actual password strength or requirements for external identity providers
+- Key event IDs: **4625** failed logon, **4624** successful logon, **4740** account locked out
+- Simulated company case: **20 authentication failures**, **three lockouts in an hour**, employee denies attempting login, source unknown. Analyst plan: check account/source/timing, correlate 4625 with 4740 and 4624, consider stale application/service credentials versus unauthorised attempts
+- SOC conclusion: **no actual lockout or attack confirmed** on inspected device; investigate suspicious patterns before attributing them to an attacker. Apply containment under authorised incident response processes if evidence warrants it
+- Core distinction: a configured lockout policy is not evidence of an actual lockout; repeated failed attempts are suspicious in context but aren't proof of compromise
+
+</details>
