@@ -777,3 +777,16 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Core distinction: a configured lockout policy is not evidence of an actual lockout; repeated failed attempts are suspicious in context but aren't proof of compromise
 
 </details>
+
+
+<details>
+<summary><strong>Day 50 - Local administrator account review</strong></summary>
+
+- Queried Security IDs 4720 (account creation) and 4732 (local group membership): no matching results returned for the 30-day sample; missing records are not proof that changes never happened.
+- Inspected local Administrators group with Get-LocalGroupMember: two user members, the local Administrator and a Microsoft-linked account (personal identifier redacted).
+- Get-LocalUser showed Administrator Enabled=False and LastLogon=23 May 2024, 13:23:58. Membership does not prove an account is enabled or recently created.
+- Simulated case: investigate authorisation when a new user is created, added to Administrators, and subsequently signs in.
+- Assessment: no unauthorised creation or privilege change confirmed in reviewed evidence; low concern.
+- Day 49 is still pending; Day 50 completed. Total: 49 of 120 lessons completed (40.8%).
+
+</details>
