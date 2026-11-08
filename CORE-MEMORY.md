@@ -787,6 +787,6 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Get-LocalUser showed Administrator Enabled=False and LastLogon=23 May 2024, 13:23:58. Membership does not prove an account is enabled or recently created.
 - Simulated case: investigate authorisation when a new user is created, added to Administrators, and subsequently signs in.
 - Assessment: no unauthorised creation or privilege change confirmed in reviewed evidence; low concern.
-- Day 49 is still pending; Day 50 completed. Total: 49 of 120 lessons completed (40.8%).
+- Day 49 account-lockout catch-up was subsequently completed; Day 49 and Day 50 are both finished. Total: **50 of 120 lessons (41.7%)**.
 
 </details>
