@@ -118,4 +118,4 @@ The available output is limited: historical account/group events may be absent f
 - Empty event queries are not proof that no historical change ever happened.
 - Distinguish observed evidence, possible interpretations, and remaining uncertainty in SOC reports.
 
-> **Learning progress:** Day 50 investigation completed. Day 49 (account-lockout exercise) remains pending and is not counted as completed.
+> **Learning progress:** Day 50 investigation completed. Day 49 account-lockout catch-up was subsequently completed, bringing the total to **50 of 120 lessons (41.7%)**.
