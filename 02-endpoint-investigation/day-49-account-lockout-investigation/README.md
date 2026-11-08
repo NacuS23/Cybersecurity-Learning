@@ -73,3 +73,24 @@ A company account experiences 20 failed authentication attempts and three lockou
 - Distinguish **real evidence**, **possible explanations**, and **actions not yet verified**.
 
 **Outcome of my real investigation:** No Event 4740 records were returned, and local account policy was successfully inspected.
+
+
+## Catch-up review - 8 November 2026
+
+I repeated a read-only query for Event 4740 across the preceding 30 days using the filter below:
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id = 4740
+    StartTime = (Get-Date).AddDays(-30)
+} -MaxEvents 5 -ErrorAction SilentlyContinue |
+Select-Object TimeCreated, Id |
+Format-Table -AutoSize
+```
+
+**Result:** No matching records were returned in this follow-up query.
+
+**Simulated SOC decision:** In a scenario with 20 failed logons, an account already locked by the authentication system, and an employee who denies trying to sign in, I would promptly investigate the source and check whether any successful logon occurred. The recorded lockout already restricts new sign-ins under the applicable policy; further containment, session revocation or account disablement would depend on findings and authorised incident-response procedures. Employee denial raises concern but doesn't confirm an attacker or successful compromise.
+
+**Day 49 status: Completed.** All 50 lessons through Day 50 are now completed.
