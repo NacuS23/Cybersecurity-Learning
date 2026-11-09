@@ -37,3 +37,4 @@ A dated journal of hands-on exercises as I work toward entry-level SOC skills. E
 | 24 October 2026 | [Valid signatures and suspicious behaviour](practical-labs/2026-10-24-signatures-and-behaviour-triage/README.md) | Fictional alert triage, signature limitations, process context, reviewed answers |
 | 31 October 2026 | [Configuration-change timeline](practical-labs/2026-10-31-configuration-change-timeline/README.md) | Fictional protection-gap analysis, settings interpretation, event ordering, reviewed conclusions |
 | 1 November 2026 | [File on disk versus running process](practical-labs/2026-11-01-file-versus-process/README.md) | Live Notepad observation, fictional execution timeline, historical evidence and Prefetch limitations |
+| 9 November 2026 | [Log deduplication — worked example](practical-labs/2026-11-09-log-deduplication/README.md) | Fictional sign-in records, distinct event counting, delivery duplicates, evidence limits |
