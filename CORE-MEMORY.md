@@ -776,6 +776,8 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - SOC conclusion: **no actual lockout or attack confirmed** on inspected device; investigate suspicious patterns before attributing them to an attacker. Apply containment under authorised incident response processes if evidence warrants it
 - Core distinction: a configured lockout policy is not evidence of an actual lockout; repeated failed attempts are suspicious in context but aren't proof of compromise
 
+- Final simulated follow-up: source `FINANCE-PC-07`, type 3 (network), 20 failures and 3 lockouts. IT found scheduled service using stale password. Classified as **likely configuration issue**, not confirmed intrusion. Recommended updating authorised service credentials and verifying failures cease before closure. **50/120 lessons (41.7%)** completed.
+
 </details>
 
 
