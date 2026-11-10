@@ -94,3 +94,26 @@ Format-Table -AutoSize
 **Simulated SOC decision:** In a scenario with 20 failed logons, an account already locked by the authentication system, and an employee who denies trying to sign in, I would promptly investigate the source and check whether any successful logon occurred. The recorded lockout already restricts new sign-ins under the applicable policy; further containment, session revocation or account disablement would depend on findings and authorised incident-response procedures. Employee denial raises concern but doesn't confirm an attacker or successful compromise.
 
 **Day 49 status: Completed.** All 50 lessons through Day 50 are now completed.
+
+## Final simulated SOC case — source found and credentials corrected
+
+*Training scenario only. These details were not observed in my real Windows logs.*
+
+Further investigation found the following:
+
+| Item | Simulated finding |
+| --- | --- |
+| Failed logons | 20 |
+| Source workstation | `FINANCE-PC-07` |
+| Logon type | 3 (network) |
+| Account lockouts | 3 |
+| Successful logons | None identified in the records reviewed |
+| IT finding | A scheduled service on the workstation was using the employee's previous password |
+
+**Assessment:** The most likely explanation is a misconfigured service using stale credentials, **not** a confirmed brute-force attack. A lack of successes in the inspected records is not proof no other access occurred.
+
+**Recommended action:** Have the authorised IT team update the service's saved credentials using approved credential-management procedures, check that the service continues operating, and monitor Events 4625 and 4740 to confirm failed attempts and lockouts stop. Close the alert only when the cause and fix are verified; investigate any unexplained authentication events further.
+
+**Learner's final decision:** Correctly classified the scenario as **B — likely a misconfigured service** and recommended updating the service credentials to the current valid password.
+
+**Progress:** Day 49 complete, alongside Day 50; **50/120 lessons completed (41.7%)**.
