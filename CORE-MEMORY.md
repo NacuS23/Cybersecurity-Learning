@@ -805,3 +805,24 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - **No actual Day 51 command output was provided**; this is a **reference solution**, not a completed hands-on endpoint investigation. Progress remains **50/120 (41.7%)** until live practical is finished.
 
 </details>
+
+<details>
+<summary><strong>Day 52 - Npcap scheduled task privilege and ATT&CK triage</strong></summary>
+
+- Investigated the existing `npcapwatchdog` scheduled task
+- State was `Ready`; this means waiting for a trigger, not proof it is currently executing
+- Action pointed to `C:\\Program Files\\Npcap\\CheckStatus.bat`
+- Principal was `SYSTEM` with `LogonType: ServiceAccount`
+- SYSTEM is highly privileged, but SYSTEM execution alone does not prove privilege escalation
+- Privilege escalation requires evidence that lower privileges were raised to higher privileges
+- Program Files\\Npcap is an Npcap location, not a Microsoft path
+- Task description says it ensures the Npcap service starts at boot, but the actual trigger was not inspected, so boot execution by the task was not proven
+- `CheckStatus.bat` contents were not inspected; do not invent what the script does
+- Assessment: low suspicion on available evidence, but investigation incomplete
+- Reference next checks: inspect trigger, batch contents, relevant signatures/publishers, and task history
+- MITRE ATT&CK mapping: **T1053.005 Scheduled Task**; this mechanism can support Execution, Persistence or Privilege Escalation when abused
+- ATT&CK mapping describes a technique/mechanism and does not by itself label a legitimate task as malicious
+- Key habit: separate what was observed from what is assumed
+
+</details>
+
