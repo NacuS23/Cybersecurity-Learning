@@ -795,14 +795,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 
 
 <details>
-<summary><strong>Day 51 - Privileged Windows logons reference solution (practical pending)</strong></summary>
+<summary><strong>Day 51 - Privileged Windows logons (practical completed)</strong></summary>
 
-- Reference lesson on **Event 4672**: special privileges assigned to a new logon session. A 4672 for `NT AUTHORITY\\SYSTEM` is often expected and does **not** prove privilege escalation or privilege use.
-- **Event 4624** records a successful logon. Correlate 4672 `SubjectLogonId` (common PowerShell `Properties[3]`) with 4624 `TargetLogonId` (common `Properties[7]`) plus host and time; inspect account and logon type.
-- **Event 4732** indicates a member added to a security-enabled local group; check the specific group name, added member, and whether it was authorised before treating it as an Administrators change.
-- Example scenario only: new admin-group membership plus a matching privileged logon warrants contextual triage, but isn't automatically an exploit.
-- The Day 51 GitHub README contains safe, **read-only** PowerShell inspection and correlation commands plus a worked SOC assessment.
-- **No actual Day 51 command output was provided**; this is a **reference solution**, not a completed hands-on endpoint investigation. Progress remains **50/120 (41.7%)** until live practical is finished.
+- Practical verified on **12 Nov 2026**. Read-only Security log query for last 24 hours returned **three Event 4672** records: **21:27:34 twice**, **21:27:18 once**
+- All were **NT AUTHORITY\\SYSTEM**, SID `S-1-5-18`, logon ID `0x3E7`, consistent with Windows SYSTEM activity
+- Privilege names included `SeDebugPrivilege`, `SeBackupPrivilege`, `SeRestorePrivilege`, `SeLoadDriverPrivilege`, `SeImpersonatePrivilege`, and others; the two 21:27:34 events also included `SeAuditPrivilege`
+- Event **4672** records privileges assigned to a logon session; it **does not prove** use of those privileges or attacker escalation. Multiple 4672 events do not automatically represent different users
+- **No 4624 correlation query was actually run** in this practical. For future use correlate 4672 `SubjectLogonId` with 4624 `TargetLogonId` on the same host and period, checking logon type/source
+- **4732** means membership added to a security-enabled local group; inspect the actual group and authorisation before classifying it as an Administrators change
+- Fictional `backup_admin` / `helpdesk_temp` scenario discussed separately; investigate source, account, privilege type, group member and change authorisation
+- Assessment of actual three-event sample: **low concern**, no unauthorised escalation established; cannot rule out events beyond sample
+- **Day 51 completed. Progress 51/120 (42.5%)**, 69 remaining. After finishing each future cybersecurity lesson, automatically save verified results and learning notes to GitHub rather than asking for a separate reminder
 
 </details>
 
