@@ -1,10 +1,10 @@
 # Day 51 - Investigating Privileged Windows Logons (Event 4672)
 
-**Date:** 9 November 2026  
-**Status:** Reference solution prepared; live PowerShell lab not yet verified  
+**Dates:** Reference guide 9 November 2026; hands-on verification 12 November 2026  
+**Status:** Hands-on lab completed; actual Event 4672 records reviewed  
 **Focus:** Event 4672, Event 4624, Logon IDs, and possible privilege escalation
 
-> This is a worked SOC exercise and a runnable investigation guide. **No Day 51 PowerShell results were supplied from the endpoint**, so this report does not claim that real Event 4672 records were examined or that any compromise was detected.
+> This report includes a pre-existing worked SOC reference plus **actual Event 4672 endpoint results provided on 12 November 2026**. The fictional scenario is labelled separately; no compromise has been established.
 
 ## Objective
 
@@ -22,7 +22,7 @@ A standard Windows **SYSTEM** (`NT AUTHORITY\SYSTEM`) logon can generate Event 4
 
 Some privileges visible in 4672 include `SeDebugPrivilege`, `SeBackupPrivilege`, and `SeImpersonatePrivilege`. These identify privileges assigned at logon; the event does **not** establish that someone used those privileges.
 
-**SOC question — answer B:** A 4672 event for SYSTEM **does not prove attacker privilege escalation**. Confirm account identity, session context, related events and whether the activity was expected.
+**SOC conclusion:** A 4672 event for SYSTEM **does not prove attacker privilege escalation**. Confirm account identity, session context, related events and whether the activity was expected.
 
 ## 1. Identify recent privileged logons
 
@@ -46,7 +46,7 @@ Relevant Event 4672 fields:
 - `Properties[3]`: **SubjectLogonId**
 - `Properties[4]`: **PrivilegeList**
 
-PowerShell result **not yet provided**. Do not invent accounts, times, or Logon IDs.
+The above command is the original reference example. A separate live three-event query was later run; its actual results appear in Section 4.
 
 ## 2. Correlate Event 4672 with Event 4624
 
@@ -104,11 +104,51 @@ An alert presents a successful Event 4624 for `helpdesk_temp`, a correlated 4672
 
 **Illustrative decision:** Investigate and verify, rather than treating every 4672 as a privilege-escalation attack.
 
+## 4. Actual Windows Security log results — 12 November 2026
+
+This section documents **real endpoint output** provided after the original reference exercise was prepared.
+
+I ran this read-only PowerShell query for three recent Event 4672 records from the past 24 hours:
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    Id = 4672
+    StartTime = (Get-Date).AddDays(-1)
+} -MaxEvents 3 -ErrorAction SilentlyContinue |
+Select-Object TimeCreated, Id, Message |
+Format-List
+```
+
+**Observed records:**
+
+| Recorded time | Event ID | Account | Security ID | Logon ID |
+| --- | --- | --- | --- | --- |
+| 12 Nov 2026 21:27:34 | 4672 | `NT AUTHORITY\SYSTEM` | `S-1-5-18` | `0x3E7` |
+| 12 Nov 2026 21:27:34 | 4672 | `NT AUTHORITY\SYSTEM` | `S-1-5-18` | `0x3E7` |
+| 12 Nov 2026 21:27:18 | 4672 | `NT AUTHORITY\SYSTEM` | `S-1-5-18` | `0x3E7` |
+
+**Privileges listed** across the results included `SeAssignPrimaryTokenPrivilege`, `SeTcbPrivilege`, `SeSecurityPrivilege`, `SeTakeOwnershipPrivilege`, `SeLoadDriverPrivilege`, `SeBackupPrivilege`, `SeRestorePrivilege`, `SeDebugPrivilege`, `SeSystemEnvironmentPrivilege`, `SeImpersonatePrivilege`, and `SeDelegateSessionUserImpersonatePrivilege`. The two events at 21:27:34 also included `SeAuditPrivilege`. The 21:27:18 event did not list `SeAuditPrivilege`.
+
+**Interpretation:** These are special privileges assigned to the built-in Windows SYSTEM identity. SID `S-1-5-18` and logon ID `0x3E7` are expected identifiers for SYSTEM. Three recorded 4672 events do **not** mean three different people logged in, and event 4672 does **not** prove use of any listed privilege. No unexpected named user account was observed in this three-event sample.
+
+**Scope:** No corresponding Event 4624 correlation query was performed or supplied for this exercise; therefore there is no independently verified matching 4624 event, logon type, or remote source. The three-event sample cannot rule out other privileged logons elsewhere in the Security log.
+
+### Practical SOC decision
+
+**Assessment:** Low concern for the three observed SYSTEM events. No unauthorised privilege escalation was established.
+
+**Learner response:** Correctly identified a SYSTEM 4672 as potentially normal. For the simulated case, prioritised asking what privileges the account received. Full triage should additionally validate the account, matched logon session, source, group membership change, and IT authorisation.
+
+**Disposition:** No immediate escalation justified solely by these three SYSTEM events.
+
 ## Assessment and status
 
-- **Reference problem answered:** Event 4672 for SYSTEM by itself is normal in many environments and does not prove malicious escalation.
-- **Live machine status:** Unknown for Day 51; the read-only commands have not been run and returned to the lesson.
-- **Progress tracking:** Day 51 reference solution recorded, **hands-on verification pending**. Maintain **50/120 completed** until the practical investigation is completed.
+- **Actual lab completed:** Three 4672 events from 12 November 2026 were inspected; all showed SYSTEM, SID `S-1-5-18`, and logon ID `0x3E7`.
+- **Evidence-based finding:** The reviewed records are consistent with ordinary Windows system activity; privileges being assigned do not prove misuse.
+- **Limitations:** Event 4624 correlation was explained but not run in this exercise; no claim about all other logons on the computer.
+- **Simulated SOC case:** `helpdesk_temp` / `backup_admin` examples are training scenarios, not actual endpoint findings.
+- **Progress:** **51/120 lessons completed (42.5%)**, 69 remaining. Day 51 practical verified.
 
 ## References
 
