@@ -829,3 +829,19 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 
 </details>
 
+
+
+<details>
+<summary><strong>Day 52 - Windows service installation Event 7045 practical (completed)</strong></summary>
+
+- Queried Windows **System Event 7045** over last 30 days; obtained five actual service installation records: Google Updater Service and Google Updater Internal Service on **12 Nov 2026**, and MSI Center Service, Sensor dev service and MSI Foundation Service on **4 Nov 2026**
+- All five recorded **user-mode**, **auto start**, **LocalSystem** service configurations; automatic startup can allow persistence, but does not itself prove abuse
+- Google services pointed to `C:\Program Files (x86)\Google\GoogleUpdater\159.0.8140.0\updater.exe`; MSI services pointed to MSI locations under Program Files (x86)
+- Ran read-only `Get-AuthenticodeSignature` on Google `updater.exe` and MSI `MSI_Central_Service.exe`: both **Valid**, signed by **Google LLC** and **MICRO-STAR INTERNATIONAL CO., LTD.** respectively
+- Remaining three executable signatures not checked. Valid signatures are useful evidence of authenticity but not guarantees of safety
+- Fictional service `WindowsBackupHelper` under `C:\Users\Public\backuphelper.exe` analysed separately; learner correctly explained automatic startup persistence and that an unsigned binary needs investigation, not automatic malware classification
+- Assessment of actual reviewed five events: **low concern** with no malicious installation established; limited to sample and two signature checks
+- **Day 52 practical completed; progress 52/120 (43.3%)**, 68 lessons remaining
+- Earlier separate Day 52 `npcapwatchdog` scheduled-task notes remain preserved above; do not conflate the two investigations
+
+</details>
