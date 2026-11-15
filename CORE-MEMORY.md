@@ -845,3 +845,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Earlier separate Day 52 `npcapwatchdog` scheduled-task notes remain preserved above; do not conflate the two investigations
 
 </details>
+
+
+<details>
+<summary><strong>Day 53 - First SIEM investigation with KQL</strong></summary>
+
+- Introduced Microsoft Sentinel as a SIEM and Kusto Query Language (KQL): `SigninLogs`, `where`, `ago(24h)`, `project`, `order by`
+- Analysed a **simulated** sign-in dataset: account `alex` had five failures (09:00–09:04) then success (09:05), all from example address `203.0.113.45`; `sam` had one success at 09:06
+- SOC prioritisation: investigate `alex` first. Repeated failure followed by success is suspicious but not proof of compromise; could also be a user correcting a password
+- Next evidence: user confirmation, source IP and device familiarity, MFA details, Conditional Access, sign-in history, and post-login actions
+- Critical KQL lesson: `ResultType != "0"` excludes successes; must query all relevant results to investigate a failure-followed-by-success pattern
+- This was a **guided simulated SIEM case**, not a live Sentinel workspace or executed KQL query. Write-up uses natural first-person case-report style without claiming production analysis
+- **Day 53 exercise complete. Progress 53/120 (44.2%)**, 67 lessons remaining
+
+</details>
