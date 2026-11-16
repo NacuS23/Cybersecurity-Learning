@@ -2,6 +2,7 @@
 
 **Date:** 10 November 2026  
 **Type:** Partial hands-on investigation + reference completion  
+**Status:** PARTIAL — trigger, script content, and run history not yet verified  
 **Focus:** Scheduled tasks, SYSTEM context, persistence reasoning, privilege context and MITRE ATT&CK mapping
 
 ## Objective
@@ -232,3 +233,14 @@ task
 **Low suspicion on available evidence; investigation incomplete.**
 
 No malicious activity or privilege escalation was demonstrated by the collected evidence.
+
+
+## Completion checklist (outstanding)
+
+- [ ] Verify the scheduled task's actual trigger using `(Get-ScheduledTask -TaskName "npcapwatchdog").Triggers | Format-List *`.
+- [ ] Inspect `C:\Program Files\Npcap\CheckStatus.bat` with `Get-Content` and identify any executables it invokes.
+- [ ] If those executables are present, check file metadata and digital signatures without executing unknown code.
+- [ ] Check relevant Task Scheduler event history when available to establish actual executions or recent changes.
+- [ ] Reassess the evidence and close this lab only after the remaining checks are performed.
+
+**Current status: PARTIAL.** No evidence has been supplied to justify marking the missing steps complete.
