@@ -22,7 +22,7 @@ Practical security investigations focused on Windows endpoints, authentication l
 
 **Status: Planned — not yet deployed.** The goal is to set up a free, open-source SIEM using Wazuh, ingest Windows events, investigate authentication activity, create and test an original alert rule, and document the results. No real SIEM ingestion or rule execution is claimed yet.
 
-In parallel, I'm practising KQL in Microsoft's free public Azure Data Explorer sample environment before moving to production-style security datasets. This is hands-on query practice, **not** a claim of access to a live Microsoft Sentinel workspace.
+Next, I plan to practise KQL in Microsoft's free public Azure Data Explorer sample environment before moving to production-style security datasets. This will be query practice, **not** a claim of access to a live Microsoft Sentinel workspace.
 
 ## Technical skills
 
