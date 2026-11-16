@@ -2,7 +2,7 @@
 
 **Date:** 22 September 2026  
 **Type:** Guided Windows networking practice  
-**Status:** Answers reviewed; observed port numbers still to be confirmed
+**Status:** PENDING EVIDENCE — conceptual answers reviewed, but actual port numbers and correlated connection output were not supplied
 
 ## Objective
 
@@ -65,3 +65,24 @@ Accurate endpoint and process identification helps analysts interpret a connecti
 - A PID connects a live network observation to a running process. PIDs can change or be reused, so correlate observations close together in time.
 
 </details>
+
+
+## Open items — required to mark this lab complete
+
+- [ ] Record the actual **LocalPort** and **RemotePort** from one observed TCP connection, alongside the time and TCP state.
+- [ ] Record the connection's **OwningProcess** PID and verify the corresponding process close to the same timestamp.
+- [ ] Clarify whether that connection belongs to the intended example.com test or to unrelated software such as Teams; do not assume the two are the same.
+- [ ] If claiming an observed connectivity-test outcome, preserve the actual `Test-NetConnection` output; otherwise leave that result unverified.
+
+**Read-only verification commands (for a future session):**
+
+```powershell
+Get-NetTCPConnection -State Established -ErrorAction SilentlyContinue |
+  Select-Object LocalAddress,LocalPort,RemoteAddress,RemotePort,State,OwningProcess |
+  Format-Table -AutoSize
+
+# Replace <PID> with one real OwningProcess value from the output above:
+Get-Process -Id <PID> | Select-Object Name,Id,Path
+```
+
+**Current disposition:** The TCP concepts were practised, but the practical connection evidence remains **pending**, not fully verified.
