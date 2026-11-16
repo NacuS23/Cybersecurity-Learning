@@ -868,3 +868,15 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 
 </details>
 
+
+
+## Day 54 — Password spraying and KQL aggregation (16 November 2026)
+
+- Practised identifying multiple failed logins from one source across many accounts as possible **password spraying**, distinct from many password guesses against a single account.
+- Simulated `SigninLogs` dataset: example `198.51.100.25` had 15 failures across approximately 10 accounts; `203.0.113.70` had 28 failures against one account; `192.0.2.40` had 3 failures across 3 accounts.
+- KQL: `summarize FailedAttempts=count(), TargetedAccounts=dcount(UserPrincipalName) by IPAddress`; `dcount()` estimates distinct user accounts.
+- Correct follow-up query filters for `IPAddress == "198.51.100.25"` and `ResultType == "0"` to search for successful sign-ins, over a one-hour time window.
+- A zero-result query only tells us no matching events were returned within available data and scope; it does **not** prove no accounts were compromised.
+- This was a **simulated SIEM learning exercise**, not a live Microsoft Sentinel investigation. Real KQL query execution remains a future practical.
+- **Progress: Day 54 completed, 54/120 (45%), 66 remaining.**
+
