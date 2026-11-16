@@ -1,44 +1,54 @@
-# Cybersecurity-Learning
-My hands-on journey learning networking, Cybersecurity and SOC analysis and more!
+# Cybersecurity & SOC Analyst Learning Portfolio
 
-## Core memory
+Practical cybersecurity studies focused on **network troubleshooting, Windows endpoint investigation, authentication logs, incident triage and SIEM analysis**.
 
-[Open the expandable daily recap](CORE-MEMORY.md)
+This repository documents the path towards an entry-level Security Operations Centre (SOC) analyst role. It contains investigations conducted on a Windows workstation, exercises using supplied security data, and concise write-ups that separate **observed evidence**, **interpretation**, and **remaining uncertainty**.
 
-## Learning notes
+**Current learning milestone:** 53 of 120 lessons completed (44.2%) as of 16 November 2026. Day 54, password-spraying analysis with KQL, is in progress. This tracks study sessions, not professional experience or a job-readiness score.
 
-[Networking fundamentals — Days 1–14](01-networking-fundamentals/)
+## Selected investigations
 
-## TryHackMe
+| Investigation | Evidence | SOC skills |
+| --- | --- | --- |
+| [Windows authentication log investigation](02-endpoint-investigation/day-48-windows-authentication-log-investigation/README.md) | Live Windows Security event data | Logon types, 4624/4625, session context |
+| [Defender and PowerShell event timeline](02-endpoint-investigation/day-47-windows-event-correlation-timeline/README.md) | Live Windows event records | Timeline correlation, evidence limits, settings changes |
+| [Windows account and administrator membership](02-endpoint-investigation/day-50-windows-account-and-admin-membership/README.md) | Live Windows account checks | Access review, Events 4720/4732, account status |
+| [Service installation and signature validation](02-endpoint-investigation/day-52-windows-service-installation-investigation/README.md) | Live System Event 7045 and Authenticode results | Service persistence, publisher checks, low-confidence indicators |
+| [First SIEM authentication investigation](02-endpoint-investigation/day-53-first-siem-investigation-kql/README.md) | Simulated sign-in dataset | KQL fundamentals, failure-to-success patterns, alert triage |
+| [Windows Security Event Log practice](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Live Windows event data | 4624/4625/4672/4688, event correlation |
 
-[View my TryHackMe learning journal](tryhackme/README.md)
+## Browse the repository
 
-## Practical labs
+| Section | What's inside |
+| --- | --- |
+| [Networking fundamentals](01-networking-fundamentals/) | Days 1–18: DNS, ARP, TCP/UDP, TLS, firewalls and connections |
+| [Windows endpoint and security investigations](02-endpoint-investigation/) | Days 19–53: processes, services, scheduled tasks, Defender, log analysis and introductory KQL |
+| [Practical labs — status register](practical-labs/README.md) | Date-organised labs with evidence type, completion status and outstanding checks |
+| [TryHackMe](tryhackme/README.md) | Completed modules and self-study progress |
+| [Detailed learning journal](notes/learning-journal.md) | Archived study notes; separate from the curated case studies |
 
-A dated journal of hands-on exercises as I work toward entry-level SOC skills. Each write-up records the steps taken, evidence observed, lessons learned and limits of the investigation.
+## Practical lab status
 
-| Date | Exercise | Skills practised |
-|---|---|---|
-| 18 September 2026 | [Windows port and digital signature investigation](practical-labs/2026-09-18-windows-process-investigation/README.md) | Process identification, TCP/UDP interpretation, file location checks, signature verification, evidence-based reporting |
-| 19 September 2026 | [Suspicious connection triage practice](practical-labs/2026-09-19-suspicious-connection-triage/README.md) | Alert prioritisation, process path analysis, signature interpretation, network triage, evidence-based conclusions |
-| 20 September 2026 | [Windows Security Event Log investigation](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Event IDs 4624/4625/4672/4688, logon-type analysis, Logon ID correlation, audit-policy review |
-| 22 September 2026 | [ARP and DNS practice review](practical-labs/2026-09-22-arp-dns-review/README.md) | Gateway identification, ARP comparison, DNS resolution, next-hop interpretation |
-| 22 September 2026 | [TCP ports and handshake practice](practical-labs/2026-09-22-tcp-ports-handshake/README.md) | TCP handshake, process identification, IP versus port distinction; observed ports pending |
-| 24 September 2026 | [Connection logs and timeline practice](practical-labs/2026-09-24-connection-log-timeline/README.md) | Fictional log analysis, repeated attempts, firewall decisions, reviewed questions and answers |
-| 30 September 2026 | [TCP connection outcome analysis](practical-labs/2026-09-30-tcp-connection-outcome-analysis/README.md) | Firewall decisions, TCP handshake analysis, TLS/application-layer interpretation, evidence-based conclusions |
-| 2 October 2026 | [Notepad process command-line investigation](practical-labs/2026-10-02-notepad-process-command-line/README.md) | Process and parent PIDs, command lines, signature verification, reviewed answers |
-| 3 October 2026 | [Listening addresses and firewall profiles](practical-labs/2026-10-03-listening-addresses-firewall/README.md) | Wildcard versus loopback listeners, process identification, network and firewall profiles, reachability limits |
-| 7 October 2026 | [PowerShell practice and AggregatorHost investigation](practical-labs/2026-10-07-powershell-aggregatorhost-investigation/README.md) | Pipelines, sorting and selecting output, process-parent investigation, signatures, hosted services, reviewed answers |
-| 8 October 2026 | [PowerShell filtering and Edge connection investigation](practical-labs/2026-10-08-powershell-filtering-and-edge-connection-investigation/README.md) | Where-Object filtering, PID-to-process mapping, signature verification, remote IP analysis, DNS correlation |
-| 9 October 2026 | [Adobe service persistence investigation](practical-labs/2026-10-09-adobe-service-persistence-investigation/README.md) | Auto-start services, LocalSystem context, executable path validation, Authenticode signatures, PID-to-process correlation |
-| 11 October 2026 | [OneDC_Updater scheduled task investigation](practical-labs/2026-10-11-onedc-updater-scheduled-task-investigation/README.md) | Scheduled-task persistence, actions and triggers, run level, Authenticode validation, file metadata correlation |
-| 15 October 2026 | [Explorer process record and variables](practical-labs/2026-10-15-explorer-process-record-variables/README.md) | Process properties, PID and path, variable assignment, reviewed answers |
-| 22 October 2026 | [Least privilege — study notes](practical-labs/2026-10-22-least-privilege-worked-example/README.md) | Fictional access review, authorisation, minimum permissions, knowledge-check answers |
-| 24 October 2026 | [Valid signatures and suspicious behaviour](practical-labs/2026-10-24-signatures-and-behaviour-triage/README.md) | Fictional alert triage, signature limitations, process context, reviewed answers |
-| 31 October 2026 | [Configuration-change timeline](practical-labs/2026-10-31-configuration-change-timeline/README.md) | Fictional protection-gap analysis, settings interpretation, event ordering, reviewed conclusions |
-| 1 November 2026 | [File on disk versus running process](practical-labs/2026-11-01-file-versus-process/README.md) | Live Notepad observation, fictional execution timeline, historical evidence and Prefetch limitations |
-| 9 November 2026 | [Log deduplication — worked example](practical-labs/2026-11-09-log-deduplication/README.md) | Fictional sign-in records, distinct event counting, delivery duplicates, evidence limits |
-| 10 November 2026 | [Npcap watchdog scheduled task triage](practical-labs/2026-11-10-npcap-watchdog-scheduled-task-triage/README.md) | Scheduled-task action analysis, SYSTEM context, persistence vs privilege escalation, evidence limits, MITRE ATT&CK T1053.005 |
-| 12 November 2026 | [Phishing email and click investigation](practical-labs/2026-11-12-phishing-email-click-investigation/README.md) | Fictional email triage, hostnames, delivery versus clicks, filtering scope, reviewed answers |
-| 14 November 2026 | [Attachment and process-chain investigation](practical-labs/2026-11-14-attachment-process-chain/README.md) | Fictional attachment triage, parent PID correlation, blocked-request limitations, reviewed answers |
-| 15 November 2026 | [PID reuse and event timing — worked example](practical-labs/2026-11-15-pid-reuse-event-timing/README.md) | Fictional Windows logs, process attribution, evidence limits |
+The [lab register](practical-labs/README.md) includes **23 dated exercises**: **21 completed**, **one pending evidence**, and **one partial** (status audit: 16 November 2026).
+
+The two open items are:
+- [TCP ports and handshake](practical-labs/2026-09-22-tcp-ports-handshake/README.md) — pending actual local/remote port values and matching process evidence.
+- [Npcap scheduled task](practical-labs/2026-11-10-npcap-watchdog-scheduled-task-triage/README.md) — partial; task trigger, batch-file contents and execution history have not yet been verified.
+
+No missing observations are represented as completed checks.
+
+## Tools and methods
+
+**Windows / endpoint:** PowerShell, Get-WinEvent, Get-Process, Get-NetTCPConnection, Event Viewer, Windows Defender, Authenticode signatures and file hashes.
+
+**Network / security concepts:** DNS, TCP/IP, ports, TLS, firewall outcomes, process attribution, persistence and MITRE ATT&CK.
+
+**SIEM:** Introductory Microsoft Sentinel KQL exercises using simulated sign-in records. Live Sentinel query execution has **not** been claimed.
+
+## Documentation approach
+
+Each report aims to show the question under investigation, relevant commands or supplied evidence, the findings, what the findings **do not** prove, and the next appropriate SOC action. Fictional exercises are labelled as simulations; Windows observations are attributed to the workstation where checked.
+
+---
+
+*Learning portfolio — not an assertion of professional incident-response employment or production SOC access.*
