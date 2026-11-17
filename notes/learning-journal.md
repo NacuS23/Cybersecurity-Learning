@@ -880,3 +880,15 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - This was a **simulated SIEM learning exercise**, not a live Microsoft Sentinel investigation. Real KQL query execution remains a future practical.
 - **Progress: Day 54 completed, 54/120 (45%), 66 remaining.**
 
+
+
+## Day 55 — Correlating suspicious sign-ins across accounts (17 November 2026)
+
+- **Worked example prepared**, based on simulated Microsoft Entra sign-in data; no live Microsoft Sentinel queries or independently completed endpoint investigation
+- Scenario: six invalid-credential events targeting Alex, Sam, and Maria from documentation IP `198.51.100.25` over six minutes, followed by a successful Sam sign-in from the same IP
+- Separate source `203.0.113.70` generated three failures against only the Support account, indicating a different pattern
+- Reusable KQL examples show `summarize`, `countif(ResultType == "50126")`, `countif(ResultType == "0")`, `dcount(UserPrincipalName)` and `make_set()`; a `datatable` sample is included for future hands-on practice
+- Analytical conclusion: possible password spraying and a successful authentication requiring prompt verification; **compromise not established**
+- Recommended next checks: source and device history, user confirmation, MFA/Conditional Access outcomes, subsequent account activity and relevant correlated alerts
+- **Day 55 case study documented as a worked solution**, independent practical still pending; 55/120 lesson topics covered, 65 remaining in the programme
+
