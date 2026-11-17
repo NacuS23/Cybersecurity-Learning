@@ -14,6 +14,7 @@ Practical security investigations focused on Windows endpoints, authentication l
 | [Service installation investigation](02-endpoint-investigation/day-52-windows-service-installation-investigation/README.md) | Windows System Event 7045 and executable signatures | Service persistence, publisher validation, SOC triage |
 | [Authentication alert investigation with KQL](02-endpoint-investigation/day-53-first-siem-investigation-kql/README.md) | Simulated sign-ins | Failure-to-success patterns, KQL filtering |
 | [Password-spraying analysis](02-endpoint-investigation/day-54-kql-password-spraying-triage/README.md) | Simulated aggregated sign-ins | `summarize`, `count()`, `dcount()`, account correlation |
+| [Multi-account sign-in correlation](02-endpoint-investigation/day-55-multi-account-signin-correlation/README.md) | Simulated sign-in timeline, worked case | `countif()`, success correlation, incident triage |
 | [Windows Security event investigation](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Windows event data | Authentication, privilege context, event correlation |
 
 ## Current technical project
