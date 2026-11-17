@@ -56,3 +56,7 @@ These labs document a mixture of **hands-on observations from a Windows endpoint
 - [TryHackMe progress](../tryhackme/README.md)
 
 **Audit date:** 16 November 2026. Statuses reflect evidence in the existing write-ups, not newly performed tests.
+
+## Worked examples for review
+
+- 17 November 2026 — [Scope a Windows service installation with logs](2026-11-17-service-install-log-scoping/README.md). Fictional data; separate from the audited completion totals above.
