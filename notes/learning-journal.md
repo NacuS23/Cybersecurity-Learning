@@ -892,3 +892,15 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Recommended next checks: source and device history, user confirmation, MFA/Conditional Access outcomes, subsequent account activity and relevant correlated alerts
 - **Day 55 case study documented as a worked solution**, independent practical still pending; 55/120 lesson topics covered, 65 remaining in the programme
 
+
+
+## Day 56 — KQL five-minute time-window detection (18 November 2026)
+
+- Prepared a **reproducible KQL worked case** with 12 synthetic sign-in records, documentation-only IP addresses, and UTC timestamps. No live Sentinel or Azure Data Explorer query was run
+- Introduced `bin(TimeGenerated, 5m)` to group failed sign-ins by source IP and five-minute windows
+- Derived expected group counts: `198.51.100.25` had 5 failures across 3 distinct accounts at 10:00–10:04; `203.0.113.7` had 2 failures at 10:05–10:09; two other windows had 1 failure each
+- Sample threshold `FailedAttempts >= 5 and TargetedAccounts >= 3` flags the first group only; it is an **illustrative detection concept, not a deployed rule**
+- Additional source review shows 7 failed events and one successful sign-in for Sam at 10:05, requiring investigation; compromise not established
+- Follow-up remains pending: actually execute the query in Microsoft's public KQL help cluster, compare returned rows to the expected counts, then proceed toward a real SIEM ingestion and detection lab
+- **Day 56 worked lesson documented; 56/120 topics covered (46.7%)**, 64 remaining, independent execution pending
+
