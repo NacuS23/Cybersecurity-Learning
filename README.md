@@ -16,6 +16,7 @@ Practical security investigations focused on Windows endpoints, authentication l
 | [Password-spraying analysis](02-endpoint-investigation/day-54-kql-password-spraying-triage/README.md) | Simulated aggregated sign-ins | `summarize`, `count()`, `dcount()`, account correlation |
 | [Multi-account sign-in correlation](02-endpoint-investigation/day-55-multi-account-signin-correlation/README.md) | Simulated sign-in timeline, worked case | `countif()`, success correlation, incident triage |
 | [KQL five-minute window detection](02-endpoint-investigation/day-56-kql-time-window-detection/README.md) | Reproducible synthetic KQL dataset, browser run pending | `bin()`, time windows, threshold filtering |
+| [KQL verification and failure-to-success correlation](02-endpoint-investigation/day-57-browser-kql-verification/README.md) | Synthetic query files with locally checked expected results; KQL browser run pending | `count_distinct()`, `join`, query QA and risk interpretation |
 | [Windows Security event investigation](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Windows event data | Authentication, privilege context, event correlation |
 
 ## Current technical project
@@ -24,7 +25,7 @@ Practical security investigations focused on Windows endpoints, authentication l
 
 **Status: Planned — not yet deployed.** The goal is to set up a free, open-source SIEM using Wazuh, ingest Windows events, investigate authentication activity, create and test an original alert rule, and document the results. No real SIEM ingestion or rule execution is claimed yet.
 
-A reproducible [five-minute KQL time-window exercise](02-endpoint-investigation/day-56-kql-time-window-detection/README.md) is ready for independent execution in Microsoft's free public Azure Data Explorer sample environment; the actual browser run remains pending. This will be query practice, **not** a claim of access to a live Microsoft Sentinel workspace.
+Reproducible [KQL time-window](02-endpoint-investigation/day-56-kql-time-window-detection/README.md) and [failure-to-success correlation](02-endpoint-investigation/day-57-browser-kql-verification/README.md) exercises are prepared for independent execution in Microsoft's free public Azure Data Explorer environment. Expected results were checked locally, but the **real KQL browser runs remain pending**; these are not production Sentinel investigations.
 
 ## Technical skills
 
