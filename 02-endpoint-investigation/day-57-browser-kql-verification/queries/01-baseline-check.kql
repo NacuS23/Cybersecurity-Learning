@@ -1,0 +1,22 @@
+// Day 57 — validation query. Synthetic dataset only; safe to paste into a free KQL editor.
+let LabSignins = datatable(TimeGenerated:datetime, UserPrincipalName:string, IPAddress:string, ResultType:string)
+[
+    datetime(2026-11-18T10:00:00Z), "alex@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-18T10:01:00Z), "sam@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-18T10:02:00Z), "maria@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-18T10:03:00Z), "alex@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-18T10:04:00Z), "sam@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-18T10:05:00Z), "sam@example.com", "198.51.100.25", "0",
+    datetime(2026-11-18T10:06:00Z), "maria@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-18T10:07:00Z), "finance@example.com", "203.0.113.7", "50126",
+    datetime(2026-11-18T10:08:00Z), "finance@example.com", "203.0.113.7", "50126",
+    datetime(2026-11-18T10:09:00Z), "finance@example.com", "203.0.113.7", "0",
+    datetime(2026-11-18T10:10:00Z), "external@example.com", "192.0.2.8", "0",
+    datetime(2026-11-18T10:11:00Z), "admin@example.com", "198.51.100.25", "50126"
+];
+LabSignins
+| summarize
+    TotalEvents = count(),
+    InvalidCredentials = countif(ResultType == "50126"),
+    SuccessfulSignins = countif(ResultType == "0"),
+    DifferentAccounts = count_distinct(UserPrincipalName)
