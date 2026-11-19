@@ -124,4 +124,4 @@ The condition uses exact window boundaries. For real attacks, attempts can strad
 - [Microsoft Learn — `join` operator](https://learn.microsoft.com/en-us/kusto/query/join-operator)
 - [Microsoft Learn — `bin` function](https://learn.microsoft.com/en-us/kusto/query/bin-function)
 
-[Back to main portfolio](../../../README.md)
+[Back to main portfolio](../../README.md)
