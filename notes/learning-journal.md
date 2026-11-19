@@ -904,3 +904,14 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Follow-up remains pending: actually execute the query in Microsoft's public KQL help cluster, compare returned rows to the expected counts, then proceed toward a real SIEM ingestion and detection lab
 - **Day 56 worked lesson documented; 56/120 topics covered (46.7%)**, 64 remaining, independent execution pending
 
+
+
+## Day 57 — KQL query validation and failure-to-success correlation (19 November 2026)
+
+- Prepared a **worked KQL validation exercise** with two runnable `.kql` files and a self-contained, synthetic 12-event dataset; **not run** in Microsoft's live help-cluster query engine
+- Independently checked the expected values using a local JavaScript calculation: 12 total records, 9 invalid-credential events, 3 successes, 6 distinct account names
+- Added a second KQL query correlating a `bin(..., 5m)` failure cluster with a subsequent successful sign-in from the same **IP address** via `join kind=inner` and an explicit 10-minute follow-up interval
+- Expected correlation: one suspicious cluster for `198.51.100.25` at 10:00 UTC (5 failures, 3 distinct accounts) matched to a successful Sam sign-in at 10:05 UTC
+- Explicit caveat: shared IPs (NAT/proxies) can correlate unrelated users; a successful sign-in is not proof of compromise
+- **Day 57 worked example documented; live KQL execution and independent verification pending.** 57/120 topics covered (47.5%), 63 left. Next learning priority: actual browser-based KQL run
+
