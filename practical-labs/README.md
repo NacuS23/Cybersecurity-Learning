@@ -61,3 +61,4 @@ These labs document a mixture of **hands-on observations from a Windows endpoint
 
 - 17 November 2026 — [Scope a Windows service installation with logs](2026-11-17-service-install-log-scoping/README.md). Fictional data; separate from the audited completion totals above.
 - 18 November 2026 — [PowerShell log filtering](2026-11-18-powershell-log-filtering/README.md). Fictional worked solution with expected output; commands not executed in the publishing environment. Separate from the audited completion totals above.
+- 19 November 2026 — [Why an empty search can mislead: AND versus OR](2026-11-19-and-or-log-filters/README.md). Fictional worked solution with expected output; commands not executed in the publishing environment. Separate from the audited completion totals above.
