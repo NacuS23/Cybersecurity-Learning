@@ -915,3 +915,14 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Explicit caveat: shared IPs (NAT/proxies) can correlate unrelated users; a successful sign-in is not proof of compromise
 - **Day 57 worked example documented; live KQL execution and independent verification pending.** 57/120 topics covered (47.5%), 63 left. Next learning priority: actual browser-based KQL run
 
+
+
+## Day 58 — KQL detection unit tests and false-positive controls (21 November 2026)
+
+- Prepared a reproducible **worked training lab**, not a live KQL execution, with 24 synthetic authentication events, two standalone `.kql` files, and a documented 10–15 minute browser-based verification procedure
+- Independently calculated expected outputs with JavaScript: **24 events, 19 failures, 5 successes, 10 accounts, 2 qualifying failure windows, 1 timely success correlation**
+- Positive case: `198.51.100.25` has five failures across three accounts at 10:00–10:04 followed by Sam's successful sign-in at 10:05
+- Negative cases: five failures against a single Backup account do not meet multi-account threshold; a separate multi-account failure cluster with a success at 10:41 is too late for the 10:30–10:40 follow-up window
+- Introduced `toscalar()`, `materialize()`, `iff()`, `join kind=leftouter`, `countif()` and `make_set_if()` in reusable detection-validation queries
+- **Status: Day 58 worked lab documented; real KQL execution still pending.** 58/120 topics covered (48.3%), 62 remaining. Prioritise genuine query output before claiming a hands-on SIEM case
+
