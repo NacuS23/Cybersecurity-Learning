@@ -1,0 +1,52 @@
+// Day 58. Synthetic events; no Sentinel workspace or live identity logs required.
+// Paste this entire file into the free Azure Data Explorer help cluster query editor.
+let Signins = datatable(TimeGenerated:datetime, UserPrincipalName:string, IPAddress:string, ResultType:string)
+[
+    datetime(2026-11-21T10:00:00Z), "alex@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:01:00Z), "sam@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:02:00Z), "maria@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:03:00Z), "alex@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:04:00Z), "sam@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:05:00Z), "sam@example.com", "198.51.100.25", "0",
+    datetime(2026-11-21T10:06:00Z), "maria@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:07:00Z), "finance@example.com", "203.0.113.7", "50126",
+    datetime(2026-11-21T10:08:00Z), "finance@example.com", "203.0.113.7", "50126",
+    datetime(2026-11-21T10:09:00Z), "finance@example.com", "203.0.113.7", "0",
+    datetime(2026-11-21T10:10:00Z), "external@example.com", "192.0.2.8", "0",
+    datetime(2026-11-21T10:11:00Z), "admin@example.com", "198.51.100.25", "50126",
+    datetime(2026-11-21T10:15:00Z), "backup@example.com", "203.0.113.80", "50126",
+    datetime(2026-11-21T10:16:00Z), "backup@example.com", "203.0.113.80", "50126",
+    datetime(2026-11-21T10:17:00Z), "backup@example.com", "203.0.113.80", "50126",
+    datetime(2026-11-21T10:18:00Z), "backup@example.com", "203.0.113.80", "50126",
+    datetime(2026-11-21T10:19:00Z), "backup@example.com", "203.0.113.80", "50126",
+    datetime(2026-11-21T10:20:00Z), "backup@example.com", "203.0.113.80", "0",
+    datetime(2026-11-21T10:25:00Z), "amy@example.com", "192.0.2.70", "50126",
+    datetime(2026-11-21T10:26:00Z), "ben@example.com", "192.0.2.70", "50126",
+    datetime(2026-11-21T10:27:00Z), "cam@example.com", "192.0.2.70", "50126",
+    datetime(2026-11-21T10:28:00Z), "amy@example.com", "192.0.2.70", "50126",
+    datetime(2026-11-21T10:29:00Z), "ben@example.com", "192.0.2.70", "50126",
+    datetime(2026-11-21T10:41:00Z), "amy@example.com", "192.0.2.70", "0"
+];
+let Windows = materialize(
+    Signins
+    | where ResultType == "50126"
+    | summarize Failures=count(), Accounts=count_distinct(UserPrincipalName)
+      by IPAddress, WindowStart=bin(TimeGenerated, 5m)
+    | where Failures >= 5 and Accounts >= 3
+);
+let Correlated =
+    Windows
+    | join kind=inner (
+        Signins
+        | where ResultType == "0"
+        | project IPAddress, SuccessfulUser=UserPrincipalName, SuccessfulAt=TimeGenerated
+    ) on IPAddress
+    | where SuccessfulAt >= WindowStart + 5m and SuccessfulAt < WindowStart + 15m
+    | project IPAddress, WindowStart, SuccessfulUser, SuccessfulAt;
+print TotalEvents=toscalar(Signins | count),
+      FailedEvents=toscalar(Signins | where ResultType == "50126" | count),
+      SuccessfulEvents=toscalar(Signins | where ResultType == "0" | count),
+      DistinctAccounts=toscalar(Signins | summarize n=count_distinct(UserPrincipalName) | project n),
+      CandidateWindows=toscalar(Windows | count),
+      CorrelatedSuccesses=toscalar(Correlated | count)
+| extend TestResult=iff(TotalEvents==24 and FailedEvents==19 and SuccessfulEvents==5 and DistinctAccounts==10 and CandidateWindows==2 and CorrelatedSuccesses==1, "PASS", "FAIL")
