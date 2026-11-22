@@ -17,10 +17,13 @@ Practical security investigations focused on Windows endpoints, authentication l
 | [Multi-account sign-in correlation](02-endpoint-investigation/day-55-multi-account-signin-correlation/README.md) | Simulated sign-in timeline, worked case | `countif()`, success correlation, incident triage |
 | [KQL five-minute window detection](02-endpoint-investigation/day-56-kql-time-window-detection/README.md) | Reproducible synthetic KQL dataset, browser run pending | `bin()`, time windows, threshold filtering |
 | [KQL verification and failure-to-success correlation](02-endpoint-investigation/day-57-browser-kql-verification/README.md) | Synthetic query files with locally checked expected results; KQL browser run pending | `count_distinct()`, `join`, query QA and risk interpretation |
+| [Executed Windows logon detector](02-endpoint-investigation/day-59-windows-logon-detection-prototype/README.md) | Python code executed against 41 synthetic 4624/4625 logons; 9 passing tests | Rolling windows, login correlation, false-positive tests |
 | [KQL detection unit tests and false-positive controls](02-endpoint-investigation/day-58-kql-detection-unit-tests/README.md) | 24 synthetic sign-ins; independently checked expected outputs, real KQL run pending | `toscalar()`, `materialize()`, joins, positive/negative testing |
 | [Windows Security event investigation](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Windows event data | Authentication, privilege context, event correlation |
 
 ## Current technical project
+
+The [Day 59 detection prototype](02-endpoint-investigation/day-59-windows-logon-detection-prototype/README.md) is a **real executed Python test suite** on synthetic normalized Windows authentication events (nine unit tests passed). It is not a deployed SIEM or production detection. The planned Wazuh lab remains the next infrastructure milestone.
 
 ### [Windows SIEM and Custom Detection Home Lab](projects/windows-siem-detection-lab/README.md)
 
