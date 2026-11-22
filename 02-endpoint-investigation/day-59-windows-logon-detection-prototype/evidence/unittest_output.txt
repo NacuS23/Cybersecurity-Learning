@@ -1,0 +1,14 @@
+test_duplicate_suppression_for_single_window (test_detector.DetectionTests.test_duplicate_suppression_for_single_window) ... ok
+test_expected_counts (test_detector.DetectionTests.test_expected_counts) ... ok
+test_one_account_repeated_failure_not_spray (test_detector.DetectionTests.test_one_account_repeated_failure_not_spray) ... ok
+test_positive_spray_then_targeted_success (test_detector.DetectionTests.test_positive_spray_then_targeted_success) ... ok
+test_sliding_window_catches_clock_bin_boundary (test_detector.DetectionTests.test_sliding_window_catches_clock_bin_boundary) ... ok
+test_success_too_late_not_correlated (test_detector.DetectionTests.test_success_too_late_not_correlated) ... ok
+test_timezone_required (test_detector.DetectionTests.test_timezone_required) ... ok
+test_unknown_source_and_local_logons_excluded (test_detector.DetectionTests.test_unknown_source_and_local_logons_excluded) ... ok
+test_unrelated_account_same_ip_not_correlated (test_detector.DetectionTests.test_unrelated_account_same_ip_not_correlated) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK
