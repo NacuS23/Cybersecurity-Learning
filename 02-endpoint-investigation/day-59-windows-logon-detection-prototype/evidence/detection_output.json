@@ -1,0 +1,77 @@
+{
+  "bursts_with_targeted_success": 2,
+  "candidate_bursts": 4,
+  "findings": [
+    {
+      "accounts": [
+        "alex",
+        "maria",
+        "sam"
+      ],
+      "correlated_successes": [
+        {
+          "at": "2026-11-22T10:05:00+00:00",
+          "host": "LAB-SRV-01",
+          "user": "sam"
+        }
+      ],
+      "distinct_accounts": 3,
+      "failed_attempts": 5,
+      "follow_up_needed": true,
+      "last_failure": "2026-11-22T10:04:00+00:00",
+      "source_ip": "198.51.100.25",
+      "window_start": "2026-11-22T10:00:00+00:00"
+    },
+    {
+      "accounts": [
+        "amy",
+        "ben",
+        "cam"
+      ],
+      "correlated_successes": [],
+      "distinct_accounts": 3,
+      "failed_attempts": 5,
+      "follow_up_needed": false,
+      "last_failure": "2026-11-22T10:24:00+00:00",
+      "source_ip": "192.0.2.70",
+      "window_start": "2026-11-22T10:20:00+00:00"
+    },
+    {
+      "accounts": [
+        "lee",
+        "pat",
+        "robin"
+      ],
+      "correlated_successes": [],
+      "distinct_accounts": 3,
+      "failed_attempts": 5,
+      "follow_up_needed": false,
+      "last_failure": "2026-11-22T10:34:00+00:00",
+      "source_ip": "203.0.113.75",
+      "window_start": "2026-11-22T10:30:00+00:00"
+    },
+    {
+      "accounts": [
+        "emma",
+        "noah",
+        "olivia"
+      ],
+      "correlated_successes": [
+        {
+          "at": "2026-11-22T11:03:00+00:00",
+          "host": "LAB-SRV-01",
+          "user": "noah"
+        }
+      ],
+      "distinct_accounts": 3,
+      "failed_attempts": 5,
+      "follow_up_needed": true,
+      "last_failure": "2026-11-22T11:02:00+00:00",
+      "source_ip": "192.0.2.90",
+      "window_start": "2026-11-22T10:58:00+00:00"
+    }
+  ],
+  "records_excluded": 10,
+  "records_in_scope": 31,
+  "records_loaded": 41
+}
