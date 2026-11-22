@@ -926,3 +926,16 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Introduced `toscalar()`, `materialize()`, `iff()`, `join kind=leftouter`, `countif()` and `make_set_if()` in reusable detection-validation queries
 - **Status: Day 58 worked lab documented; real KQL execution still pending.** 58/120 topics covered (48.3%), 62 remaining. Prioritise genuine query output before claiming a hands-on SIEM case
 
+
+
+## Day 59 — Executed Windows logon detection prototype (22 November 2026)
+
+- Created a stand-alone Python 3 detector, deterministic fixture generator, 41-event synthetic normalized Windows authentication dataset, and nine unit tests in `02-endpoint-investigation/day-59-windows-logon-detection-prototype/`
+- **Executed** `python -m unittest discover -s tests -v` and `python detector.py sample_events.jsonl` locally in the assistant's isolated Python container; preserved observed unittest output and JSON report under `evidence/`
+- Unit test result: **9 passed, 0 failed**
+- Detector uses Windows Security Event IDs **4625** (failed login) and **4624** (successful login) represented as simulated network LogonType 3 records, with a **rolling five-minute window** and a follow-on login matched to a targeted account within 10 minutes
+- Observed from the synthetic fixture: 41 records loaded, 31 in scope, 10 excluded, 4 candidate multi-account failure bursts and 2 bursts with later successes for targeted accounts from the same source IP
+- Negative cases verify single-account failures, successes outside the interval, unrelated successes from the same IP, missing IPs and non-network logon types; a burst crossing a fixed five-minute boundary is correctly detected
+- No real Windows log was ingested, no Wazuh/Sentinel deployed, and earlier KQL browser execution remains pending. Authoring was AI-assisted and the results are a training prototype rather than an independently performed SOC investigation
+- **Day 59 worked lesson documented, 59/120 topics covered (49.2%)**, 61 remaining. Next hands-on step: inspect real Windows logon events on the user's PC with privacy-safe evidence collection
+
