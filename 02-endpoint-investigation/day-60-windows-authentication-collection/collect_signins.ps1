@@ -46,8 +46,9 @@ catch {
 
 $directory = [IO.Path]::GetDirectoryName([IO.Path]::GetFullPath($OutputPath))
 [void][IO.Directory]::CreateDirectory($directory)
-$writer = New-Object IO.StreamWriter(
-    [IO.Path]::GetFullPath($OutputPath), $false, (New-Object Text.UTF8Encoding($false))
+$utf8WithoutBom = [System.Text.UTF8Encoding]::new($false)
+$writer = [System.IO.StreamWriter]::new(
+    [IO.Path]::GetFullPath($OutputPath), $false, $utf8WithoutBom
 )
 $written = 0
 $skipped = 0
