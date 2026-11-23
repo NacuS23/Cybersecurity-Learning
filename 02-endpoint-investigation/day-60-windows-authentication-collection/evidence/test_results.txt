@@ -1,0 +1,16 @@
+test_expected_counts (test_verify_export.ExportValidationTests.test_expected_counts) ... ok
+test_jsonl_read_rejects_malformed_row (test_verify_export.ExportValidationTests.test_jsonl_read_rejects_malformed_row) ... ok
+test_loads_all_nine_fixture_records (test_verify_export.ExportValidationTests.test_loads_all_nine_fixture_records) ... ok
+test_pseudonyms_are_consistent_for_same_account_and_ip (test_verify_export.ExportValidationTests.test_pseudonyms_are_consistent_for_same_account_and_ip) ... ok
+test_rejects_extra_sensitive_field (test_verify_export.ExportValidationTests.test_rejects_extra_sensitive_field) ... ok
+test_rejects_invalid_event_id (test_verify_export.ExportValidationTests.test_rejects_invalid_event_id) ... ok
+test_rejects_invalid_logon_type (test_verify_export.ExportValidationTests.test_rejects_invalid_logon_type) ... ok
+test_rejects_time_without_utc_timezone (test_verify_export.ExportValidationTests.test_rejects_time_without_utc_timezone) ... ok
+test_rejects_unredacted_computer (test_verify_export.ExportValidationTests.test_rejects_unredacted_computer) ... ok
+test_rejects_unredacted_ip (test_verify_export.ExportValidationTests.test_rejects_unredacted_ip) ... ok
+test_rejects_unredacted_username (test_verify_export.ExportValidationTests.test_rejects_unredacted_username) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.003s
+
+OK
