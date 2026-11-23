@@ -1,0 +1,9 @@
+{
+  "distinct_account_pseudonyms": 4,
+  "logon_failure_4625": 7,
+  "logon_success_4624": 2,
+  "network_type3": 8,
+  "records": 9,
+  "unknown_or_local_source": 1
+}
+Schema verified; privacy is NOT guaranteed. Keep genuine exports local.
