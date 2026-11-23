@@ -939,3 +939,16 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - No real Windows log was ingested, no Wazuh/Sentinel deployed, and earlier KQL browser execution remains pending. Authoring was AI-assisted and the results are a training prototype rather than an independently performed SOC investigation
 - **Day 59 worked lesson documented, 59/120 topics covered (49.2%)**, 61 remaining. Next hands-on step: inspect real Windows logon events on the user's PC with privacy-safe evidence collection
 
+
+
+## Day 60 — Windows Security event collection and validation (23 November 2026)
+
+- Prepared a PowerShell 5.1-compatible `collect_signins.ps1` collector for Event IDs `4624` and `4625`, querying a bounded period and event count with `Get-WinEvent` and reading event XML by field name
+- Collector is designed to write a local JSONL file with per-run salted, consistently pseudonymised account names, source IPs and computer names; raw Windows logs were **not** accessed or exported in this session
+- Prepared `verify_export.py` validator and a nine-record **fictional** JSONL fixture, matching the Day 59 detector's expected fields
+- **Executed 11 Python unit tests: all passed** in an isolated Python 3 environment. Synthetic sample summary: 9 records; 7 failures (4625), 2 successes (4624), 8 network (LogonType 3), 1 missing/local source, 4 distinct account pseudonyms
+- Tests cover schema, correct counts, stable pseudonym equality, invalid IDs/time zones, and rejection of unredacted hostnames/usernames/IPs. Saved test output under Day 60 `evidence/`
+- **Windows PowerShell collector remains untested** on the user's Windows computer; no live SIEM, no real events ingested, and no compromise assessment of the user's computer
+- Privacy warning: pseudonyms are not perfect anonymisation; exact timestamps and patterns should remain local, not pushed to public GitHub
+- **Day 60 worked lesson documented and Python-tested; 60/120 topics covered (50%)**, 60 remaining. Priority: locally run collector on an authorised Windows PC, inspect private results, or work toward genuine Wazuh SIEM ingestion.
+
