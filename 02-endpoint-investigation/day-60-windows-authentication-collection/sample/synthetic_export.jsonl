@@ -1,0 +1,9 @@
+{"TimeCreated":"2026-11-23T10:00:00.000Z","EventID":4625,"TargetUserName":"acct_1111111111111111","IpAddress":"ip_aaaaaaaaaaaaaaaa","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:01:00.000Z","EventID":4625,"TargetUserName":"acct_2222222222222222","IpAddress":"ip_aaaaaaaaaaaaaaaa","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:02:00.000Z","EventID":4625,"TargetUserName":"acct_3333333333333333","IpAddress":"ip_aaaaaaaaaaaaaaaa","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:03:00.000Z","EventID":4625,"TargetUserName":"acct_1111111111111111","IpAddress":"ip_aaaaaaaaaaaaaaaa","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:04:00.000Z","EventID":4625,"TargetUserName":"acct_2222222222222222","IpAddress":"ip_aaaaaaaaaaaaaaaa","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:05:00.000Z","EventID":4624,"TargetUserName":"acct_2222222222222222","IpAddress":"ip_aaaaaaaaaaaaaaaa","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:06:00.000Z","EventID":4625,"TargetUserName":"acct_4444444444444444","IpAddress":"ip_bbbbbbbbbbbbbbbb","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:07:00.000Z","EventID":4625,"TargetUserName":"acct_4444444444444444","IpAddress":"ip_bbbbbbbbbbbbbbbb","LogonType":3,"Computer":"host_cccccccccccccccc"}
+{"TimeCreated":"2026-11-23T10:08:00.000Z","EventID":4624,"TargetUserName":"acct_1111111111111111","IpAddress":"-","LogonType":2,"Computer":"host_cccccccccccccccc"}
