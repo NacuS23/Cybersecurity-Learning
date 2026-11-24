@@ -952,3 +952,15 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Privacy warning: pseudonyms are not perfect anonymisation; exact timestamps and patterns should remain local, not pushed to public GitHub
 - **Day 60 worked lesson documented and Python-tested; 60/120 topics covered (50%)**, 60 remaining. Priority: locally run collector on an authorised Windows PC, inspect private results, or work toward genuine Wazuh SIEM ingestion.
 
+
+
+## Day 61 — Real Windows logon-type investigation (24 November 2026)
+
+- Learner ran **read-only commands** against real Windows Security logs; shared only aggregate counts and event IDs/timestamps, with no raw user accounts, hostnames or addresses
+- An initial 24-hour `Get-WinEvent` filter for 4624/4625 reported no matches. Follow-up showed Security log enabled with **36,535 records**, and the 10 latest records included **6 Event 5379**, **2 Event 4672** and **2 Event 4624**
+- Repeated 24-hour successful/failed logon count returned **65 Event 4624** and no `4625` group. This is a query result, **not** proof of no security threats
+- Separate LogonType extraction on 4624s showed **55 Type 5 (Service), 4 Type 7 (Unlock), 6 Type 11 (CachedInteractive), 3 Type 2 (Interactive)**, totalling **68**. No Type 3 or 10 appeared within the displayed aggregation
+- The 65-versus-68 discrepancy is unresolved; rolling time windows and elapsed time between queries are plausible causes. Do not report the counts as from the same execution
+- Assessment: predominant service-logon activity, compatible with routine Windows operations; no specific compromise indicator from aggregate counts alone. 4672 and 5379 were not separately validated
+- **Day 61 real-data aggregate SOC investigation documented, 61/120 topics covered (50.8%)**, 59 remaining. Next practical: privacy-safe `4624`/`4672` session correlation using Logon ID, or investigate service logons further
+
