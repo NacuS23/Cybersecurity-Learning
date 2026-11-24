@@ -19,10 +19,13 @@ Practical security investigations focused on Windows endpoints, authentication l
 | [KQL verification and failure-to-success correlation](02-endpoint-investigation/day-57-browser-kql-verification/README.md) | Synthetic query files with locally checked expected results; KQL browser run pending | `count_distinct()`, `join`, query QA and risk interpretation |
 | [Executed Windows logon detector](02-endpoint-investigation/day-59-windows-logon-detection-prototype/README.md) | Python code executed against 41 synthetic 4624/4625 logons; 9 passing tests | Rolling windows, login correlation, false-positive tests |
 | [Windows Security log collection and validation](02-endpoint-investigation/day-60-windows-authentication-collection/README.md) | Python validator executed on nine synthetic logons; 11 passing tests, PowerShell collection pending | 4624/4625 extraction, privacy, evidence validation |
+| [Real Windows logon-type investigation](02-endpoint-investigation/day-61-real-windows-logon-type-investigation/README.md) | User-executed Windows Security event data, 68 grouped successful logons | 4624/4625 triage, type 5/7/11/2, evidence limits |
 | [KQL detection unit tests and false-positive controls](02-endpoint-investigation/day-58-kql-detection-unit-tests/README.md) | 24 synthetic sign-ins; independently checked expected outputs, real KQL run pending | `toscalar()`, `materialize()`, joins, positive/negative testing |
 | [Windows Security event investigation](practical-labs/2026-09-20-windows-security-event-log-investigation/README.md) | Windows event data | Authentication, privilege context, event correlation |
 
 ## Current technical project
+
+A [Day 61 real-Windows investigation](02-endpoint-investigation/day-61-real-windows-logon-type-investigation/README.md) documented read-only, user-executed Security log queries, confirmed logon auditing, and examined the observed types of successful logons. This is actual endpoint output (shared as aggregate counts), unlike the synthetic datasets used in the detector tests.
 
 The [Day 59 detection prototype](02-endpoint-investigation/day-59-windows-logon-detection-prototype/README.md) and [Day 60 collector/validator](02-endpoint-investigation/day-60-windows-authentication-collection/README.md) have executed Python tests on synthetic data. Day 60's Windows PowerShell collector is supplied for authorised local use, **not yet run on a real PC**. Neither lesson is a deployed SIEM or production detection. The planned Wazuh lab remains the next infrastructure milestone.
 
