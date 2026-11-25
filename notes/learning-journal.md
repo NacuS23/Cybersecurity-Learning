@@ -964,3 +964,15 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Assessment: predominant service-logon activity, compatible with routine Windows operations; no specific compromise indicator from aggregate counts alone. 4672 and 5379 were not separately validated
 - **Day 61 real-data aggregate SOC investigation documented, 61/120 topics covered (50.8%)**, 59 remaining. Next practical: privacy-safe `4624`/`4672` session correlation using Logon ID, or investigate service logons further
 
+
+
+## Day 62 — Real Windows 4624/4672 privileged logon correlation (25 November 2026)
+
+- Learner executed read-only PowerShell investigation of actual Windows Security event IDs `4624` and `4672` over a rolling 24-hour window; matched by host, same Logon ID and timestamps within ±60 seconds
+- User-provided output: **85 4624 events; 77 4672 events; 77 nearby event matches**. The 77 matches are **matching 4672 records, not independently verified unique sessions**
+- Matched 4672 records by associated successful-logon type: **68 Type 5 (Service), 3 Type 2 (Interactive), 2 Type 7 (Unlock), 4 Type 11 (CachedInteractive)**. The distribution totals 77; **68/77 (88.3%)** are service-type
+- Interpretation: predominance of service logons is compatible with normal Windows activity. Correlation by Logon ID is stronger than merely using matching times, but query does not expose account identity or `PrivilegeList` and cannot prove safe or malicious activity
+- Documented the actual learner-supplied aggregate output and drafted a reusable read-only `correlate_privileged_logons.ps1` helper. **The new script was not independently run on the user's Windows system**
+- No raw logon identifiers, usernames, source IPs, event XML, or other private event details were committed
+- **Day 62 real endpoint aggregate case documented; 62/120 covered (51.7%)**, 58 remaining. Next suggested lesson: privacy-safe Event 4672 `PrivilegeList` counts and assessment
+
