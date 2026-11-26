@@ -976,3 +976,16 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - No raw logon identifiers, usernames, source IPs, event XML, or other private event details were committed
 - **Day 62 real endpoint aggregate case documented; 62/120 covered (51.7%)**, 58 remaining. Next suggested lesson: privacy-safe Event 4672 `PrivilegeList` counts and assessment
 
+
+
+## Day 63 — Windows privilege-list triage (26 November 2026)
+
+- Learner executed read-only PowerShell query for actual **Windows Event 4672** entries in a rolling 24-hour window and grouped XML `PrivilegeList` names; only aggregate names and counts shared (no user IDs, usernames, SIDs, IPs or raw logs)
+- Observed **12 Event 4672 records**, with **12 distinct privilege types**. Nine privilege types appeared in all 12 records: `SeRestorePrivilege`, `SeDelegateSessionUserImpersonatePrivilege`, `SeDebugPrivilege`, `SeImpersonatePrivilege`, `SeSystemEnvironmentPrivilege`, `SeSecurityPrivilege`, `SeBackupPrivilege`, `SeLoadDriverPrivilege`, `SeTakeOwnershipPrivilege`
+- Three other privilege types appeared in **9 records each**: `SeAssignPrimaryTokenPrivilege`, `SeAuditPrivilege`, and `SeTcbPrivilege`
+- Verified arithmetic: `9×12 + 3×9 = 135` privilege appearances. These are not 135 events, distinct sessions, executed actions or incidents. The exact three privilege co-occurrences are not proven by the separate grouped counts
+- Privilege assignment at logon is **not evidence of privilege use or malicious escalation**. Pattern is compatible with legitimate privileged/system/service accounts, but those accounts were not verified from the shared data
+- Day 62's **77 Event 4672** query matches cannot be compared as the same 24-hour sample: it was executed at another time. The change to **12** is not evidence of abnormal activity ending
+- Documented case with an optional read-only PowerShell script for next-step **built-in account category counts only**. This helper has **not been run** by the learner or assistant on Windows
+- **Day 63 real endpoint aggregate report documented; 63/120 topics covered (52.5%)**, 57 remaining. Continue with account-category classification and cross-checks only if the new output warrants them
+
