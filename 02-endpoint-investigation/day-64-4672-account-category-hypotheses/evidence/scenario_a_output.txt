@@ -1,0 +1,26 @@
+{
+  "category_counts": {
+    "LOCAL SERVICE": 2,
+    "NETWORK SERVICE": 1,
+    "SYSTEM": 9
+  },
+  "different_privileges": 12,
+  "events": 12,
+  "other_or_invalid_or_missing": 0,
+  "privilege_appearances": 135,
+  "privilege_counts": {
+    "SeAssignPrimaryTokenPrivilege": 9,
+    "SeAuditPrivilege": 9,
+    "SeBackupPrivilege": 12,
+    "SeDebugPrivilege": 12,
+    "SeDelegateSessionUserImpersonatePrivilege": 12,
+    "SeImpersonatePrivilege": 12,
+    "SeLoadDriverPrivilege": 12,
+    "SeRestorePrivilege": 12,
+    "SeSecurityPrivilege": 12,
+    "SeSystemEnvironmentPrivilege": 12,
+    "SeTakeOwnershipPrivilege": 12,
+    "SeTcbPrivilege": 9
+  }
+}
+Synthetic training data only. An OTHER category requires context, not automatic alarm.
