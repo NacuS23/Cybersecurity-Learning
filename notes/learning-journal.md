@@ -989,3 +989,17 @@ This is my quick recap file. Each section can be opened and closed on GitHub.
 - Documented case with an optional read-only PowerShell script for next-step **built-in account category counts only**. This helper has **not been run** by the learner or assistant on Windows
 - **Day 63 real endpoint aggregate report documented; 63/120 topics covered (52.5%)**, 57 remaining. Continue with account-category classification and cross-checks only if the new output warrants them
 
+
+
+## Day 64 — Event 4672 account-category hypotheses (27 November 2026)
+
+- Continued the Day 63 question: **Which account categories received the 12 observed special-privilege events?** No new actual Windows log output was provided, so **real account categories remain unknown**
+- Verified from official Microsoft documentation the built-in SID mapping: `S-1-5-18` = SYSTEM; `S-1-5-19` = LOCAL SERVICE; `S-1-5-20` = NETWORK SERVICE
+- Created two **fictional** 12-event 4672 datasets with **identical** privilege-frequency totals matching the *shape* of Day63's aggregate (nine privilege names × 12 plus three privilege names × 9 = **135 appearances**), yet contrasting account ownership:
+  - Scenario A: 9 SYSTEM, 2 LOCAL SERVICE, 1 NETWORK SERVICE, 0 OTHER
+  - Scenario B: 3 SYSTEM, 9 OTHER/UNCLASSIFIED, 0 other built-in
+- Prepared and **executed** a Python classification tool on both datasets, and **12 unit tests passed**. Saved code, fixtures, sample output, and observed test output in `02-endpoint-investigation/day-64-4672-account-category-hypotheses/`
+- Authored a Windows PowerShell helper to query actual 4672 records and print only **aggregate account categories and SeDebug/SeTcb presence**, not usernames/SIDs. **The helper has not been executed on the user's PC**
+- Analytical conclusion: privilege frequencies cannot identify the account owners; OTHER/UNCLASSIFIED is a prompt for contextual review, **not proof of an attack**, and there is no evidence that a privilege was exploited
+- **Day 64 worked lesson complete, 64/120 topics covered (53.3%)**, 56 remaining. Next step: learner-run read-only PowerShell category summary to close the real-data evidence gap
+
